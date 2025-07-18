@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>在线答题系统</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        background: url("data/main.png") no-repeat center center fixed;
+        background-size: 100% 100%;
+        width: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      .quiz-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 800px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .quiz-title {
+        color: #333;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .quiz-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+      }
+
+      .progress-section {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .progress-text {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4caf50, #45a049);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+        width: 20%;
+      }
+
+      .timer {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #e74c3c;
+      }
+
+      .timer-icon {
+        margin-right: 8px;
+        font-size: 20px;
+      }
+
+      .question-section {
+        margin-bottom: 30px;
+      }
+
+      .question-number {
+        color: #667eea;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .question-text {
+        font-size: 20px;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .options {
+        margin-bottom: 30px;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        margin-bottom: 12px;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .option:hover {
+        border-color: #667eea;
+        background: #f8f9ff;
+        transform: translateX(5px);
+      }
+
+      .option.selected {
+        border-color: #667eea;
+        background: #667eea;
+        color: white;
+      }
+
+      .option-label {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .option.selected .option-label {
+        background: white;
+        color: #667eea;
+      }
+
+      .option-text {
+        flex: 1;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .quiz-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: #5a6268;
+        transform: translateY(-2px);
+      }
+
+      .stats {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .result-section {
+        display: none;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .result-title {
+        font-size: 32px;
+        color: #4caf50;
+        margin-bottom: 20px;
+      }
+
+      .result-score {
+        font-size: 48px;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 20px;
+      }
+
+      .result-details {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      @media (max-width: 768px) {
+        .quiz-container {
+          padding: 20px;
+          margin: 10px;
+        }
+
+        .quiz-info {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .progress-section {
+          margin-right: 0;
+          width: 100%;
+        }
+
+        .quiz-actions {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .stats {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+      }
+
+      /* 抽题动画样式 */
+      .drawing-animation {
+        position: relative;
+      }
+
+      .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        height: 120px;
+        perspective: 1000px;
+      }
+
+      .card {
+        width: 80px;
+        height: 100px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform-style: preserve-3d;
+        transition: all 0.3s ease;
+      }
+
+      .card.shuffling {
+        animation: cardShuffle 0.6s ease-in-out;
+      }
+
+      .card.selected {
+        animation: cardSelect 0.8s ease-out;
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        transform: scale(1.1) rotateY(180deg);
+      }
+
+      @keyframes cardShuffle {
+        0% {
+          transform: translateY(0) rotateY(0);
+        }
+        25% {
+          transform: translateY(-20px) rotateY(90deg);
+        }
+        50% {
+          transform: translateY(-10px) rotateY(180deg);
+        }
+        75% {
+          transform: translateY(-20px) rotateY(270deg);
+        }
+        100% {
+          transform: translateY(0) rotateY(360deg);
+        }
+      }
+
+      @keyframes cardSelect {
+        0% {
+          transform: scale(1) rotateY(0);
+        }
+        30% {
+          transform: scale(1.2) rotateY(180deg) translateY(-30px);
+        }
+        60% {
+          transform: scale(1.1) rotateY(360deg) translateY(-20px);
+        }
+        100% {
+          transform: scale(1.1) rotateY(180deg) translateY(0);
+        }
+      }
+
+      .drawing-animation h2 {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <h1 class="quiz-title">在线答题系统</h1>
+      </div>
+
+      <!-- 新增起始界面 -->
+      <div id="start-section" style="text-align: center; padding: 40px">
+        <p style="font-size: 18px; margin-bottom: 20px">
+          欢迎使用在线答题系统！
+        </p>
+        <div style="margin-bottom: 20px">
+          <label for="question-count">选择题目数量：</label>
+          <select id="question-count" style="padding: 8px; font-size: 16px">
+            <option value="5">5题</option>
+            <option value="10">10题</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="start-btn">开始答题</button>
+      </div>
+
+      <!-- 新增抽题动画界面 -->
+      <div
+        id="drawing-section"
+        style="display: none; text-align: center; padding: 40px"
+      >
+        <div class="drawing-animation">
+          <h2 style="color: #667eea; margin-bottom: 30px">
+            正在为您抽取题目...
+          </h2>
+          <div class="card-container">
+            <!-- 卡片将动态生成 -->
+          </div>
+          <div
+            class="progress-text"
+            style="margin-top: 20px; font-size: 16px; color: #666"
+          >
+            已抽取: <span id="drawn-count">0</span> /
+            <span id="target-count">5</span> 题
+          </div>
+        </div>
+      </div>
+
+      <div id="quiz-content" style="display: none">
+        <div class="quiz-info">
+          <div class="progress-section">
+            <div class="progress-text">
+              答题进度: <span id="current-question">1</span> /
+              <span id="total-questions">5</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+          <div class="timer">
+            <span class="timer-icon">⏰</span>
+            <span id="timer">05:00</span>
+          </div>
+        </div>
+
+        <div class="question-section">
+          <div class="question-number" id="question-number">第 1 题</div>
+          <div class="question-text" id="question-text">
+            以下哪个是JavaScript的正确变量声明方式？
+          </div>
+        </div>
+
+        <div class="options" id="options">
+          <div class="option" data-value="A">
+            <div class="option-label">A</div>
+            <div class="option-text">var myVariable = "Hello";</div>
+          </div>
+          <div class="option" data-value="B">
+            <div class="option-label">B</div>
+            <div class="option-text">variable myVariable = "Hello";</div>
+          </div>
+          <div class="option" data-value="C">
+            <div class="option-label">C</div>
+            <div class="option-text">declare myVariable = "Hello";</div>
+          </div>
+          <div class="option" data-value="D">
+            <div class="option-label">D</div>
+            <div class="option-text">set myVariable = "Hello";</div>
+          </div>
+        </div>
+
+        <div class="quiz-actions">
+          <div class="stats">
+            <div class="stat-item">
+              <span>✅</span>
+              <span>已答: <span id="answered-count">0</span></span>
+            </div>
+            <div class="stat-item">
+              <span>⏭️</span>
+              <span>剩余: <span id="remaining-count">5</span></span>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-secondary" id="prev-btn" disabled>
+              上一题
+            </button>
+            <button class="btn btn-primary" id="next-btn">下一题</button>
+            <button
+              class="btn btn-primary"
+              id="submit-btn"
+              style="display: none"
+            >
+              提交答案
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-section" id="result-section">
+        <div class="result-title">🎉 答题完成！</div>
+        <div class="result-score" id="final-score">85%</div>
+        <div class="result-details">
+          <p>总题数: <span id="result-total">5</span></p>
+          <p>正确答案: <span id="result-correct">4</span></p>
+          <p>错误答案: <span id="result-wrong">1</span></p>
+          <p>用时: <span id="result-time">03:45</span></p>
+        </div>
+        <button class="btn btn-primary" onclick="restartQuiz()">
+          重新开始
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // 获取URL参数
+      function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // 全局变量
+      let quizBank = [];
+      let mode = getUrlParameter("mode") || "personal"; // 默认个人赛
+
+      // 加载题库数据
+      async function loadQuizData() {
+        try {
+          let dataFile;
+          if (mode === "team") {
+            dataFile = "data/team.json";
+          } else {
+            dataFile = "data/personal.json";
+          }
+
+          const response = await fetch(dataFile);
+          const data = await response.json();
+
+          if (mode === "team") {
+            // 团体赛：主观题格式转换
+            quizBank = data.主观.map((question, index) => ({
+              question: question,
+              options: [], // 主观题没有选项
+              correct: -1, // 主观题没有标准答案
+              type: "subjective",
+            }));
+          } else {
+            // 个人赛：单选题格式
+            quizBank = data.单选.map((item) => ({
+              question: item.question,
+              options: item.options.map((opt) => opt.text),
+              correct: item.options.findIndex((opt) => opt.is_correct),
+              type: "multiple_choice",
+            }));
+          }
+
+          console.log(
+            `加载了 ${quizBank.length} 道${mode === "team" ? "主观" : "单选"}题`
+          );
+        } catch (error) {
+          console.error("加载题库失败:", error);
+          // 使用默认题库作为备用
+          quizBank = [
+            {
+              question: "题库加载失败，这是一道测试题目",
+              options: ["选项A", "选项B", "选项C", "选项D"],
+              correct: 0,
+              type: "multiple_choice",
+            },
+          ];
+        }
+      }
+
+      let questions = [];
+      let currentQuestion = 0;
+      let userAnswers = [];
+      let timeLeft = 300; // 5分钟
+      let timer;
+      let startTime = Date.now();
+
+      // 随机抽题函数（带动画）
+      function drawQuestions(num) {
+        return new Promise((resolve) => {
+          // 显示抽题动画界面
+          document.getElementById("start-section").style.display = "none";
+          document.getElementById("drawing-section").style.display = "block";
+          document.getElementById("target-count").textContent = num;
+
+          // 动态生成卡片容器
+          const cardContainer = document.querySelector('.card-container');
+          cardContainer.innerHTML = '';
+          
+          // 根据题库数量生成对应数量的卡片
+          const totalQuestions = quizBank.length;
+          const cardsToShow = Math.min(totalQuestions, 8); // 最多显示8张卡片
+          
+          for (let i = 1; i <= cardsToShow; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.id = `card${i}`;
+            card.textContent = i.toString();
+            cardContainer.appendChild(card);
+          }
+          
+          const cards = document.querySelectorAll(".card");
+          let drawnCount = 0;
+          const drawnIndices = new Set(); // 记录已抽取的题目索引
+
+          // 先播放洗牌动画
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add("shuffling");
+            }, index * 100);
+          });
+
+          // 开始抽题动画
+          const drawInterval = setInterval(() => {
+            if (drawnCount < num) {
+              // 随机选择一张未被选中的卡片
+              const availableCards = Array.from(cards).filter(
+                (card) => !card.classList.contains("selected")
+              );
+
+              if (availableCards.length > 0) {
+                const randomCard = availableCards[
+                  Math.floor(Math.random() * availableCards.length)
+                ];
+                
+                // 获取卡片对应的题目编号
+                const questionIndex = parseInt(randomCard.textContent) - 1;
+                drawnIndices.add(questionIndex);
+                
+                randomCard.classList.remove("shuffling");
+                randomCard.classList.add("selected");
+                randomCard.textContent = `第${drawnCount + 1}题`;
+
+                drawnCount++;
+                document.getElementById("drawn-count").textContent = drawnCount;
+              }
+            } else {
+              clearInterval(drawInterval);
+
+              // 动画完成后，根据抽取的索引获取题目
+              setTimeout(() => {
+                const selectedQuestions = Array.from(drawnIndices).map(index => quizBank[index]);
+
+                // 重置动画状态
+                cards.forEach((card, index) => {
+                  card.classList.remove("shuffling", "selected");
+                  card.textContent = (index + 1).toString();
+                });
+
+                resolve(selectedQuestions);
+              }, 1000);
+            }
+          }, 800);
+        });
+      }
+
+      // 开始答题（修改为异步）
+      async function startQuiz() {
+        // 先加载题库数据
+        await loadQuizData();
+
+        const num = parseInt(document.getElementById("question-count").value);
+
+        // 等待抽题动画完成
+        questions = await drawQuestions(num);
+
+        document.getElementById("total-questions").textContent =
+          questions.length;
+        currentQuestion = 0;
+        userAnswers = [];
+        timeLeft = 300;
+        startTime = Date.now();
+
+        document.getElementById("drawing-section").style.display = "none";
+        document.getElementById("quiz-content").style.display = "block";
+        loadQuestion();
+        startTimer();
+        updateStats();
+      }
+
+      // 初始化
+      function init() {
+        // 更新页面标题
+        const titleElement = document.querySelector(".quiz-title");
+        if (mode === "team") {
+          titleElement.textContent = "在线答题系统 - 团体赛";
+          document.title = "在线答题系统 - 团体赛";
+        } else {
+          titleElement.textContent = "在线答题系统 - 个人赛";
+          document.title = "在线答题系统 - 个人赛";
+        }
+
+        document.getElementById("start-section").style.display = "block";
+        document.getElementById("drawing-section").style.display = "none";
+        document.getElementById("quiz-content").style.display = "none";
+        document.getElementById("result-section").style.display = "none";
+      }
+
+      // 重新开始（返回起始界面）
+      function restartQuiz() {
+        clearInterval(timer);
+        document.getElementById("quiz-content").style.display = "none";
+        document.getElementById("result-section").style.display = "none";
+        init();
+      }
+
+      // 加载题目
+      function loadQuestion() {
+        const question = questions[currentQuestion];
+        document.getElementById("question-number").textContent = `第 ${
+          currentQuestion + 1
+        } 题`;
+        document.getElementById("question-text").textContent =
+          question.question;
+
+        const optionsContainer = document.getElementById("options");
+        optionsContainer.innerHTML = "";
+
+        if (question.type === "subjective") {
+          // 主观题：显示文本输入框
+          const textareaElement = document.createElement("div");
+          textareaElement.className = "subjective-answer";
+          textareaElement.innerHTML = `
+            <textarea 
+              id="subjective-input" 
+              placeholder="请在此输入您的答案..." 
+              style="width: 100%; min-height: 150px; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; resize: vertical;"
+            >${userAnswers[currentQuestion] || ""}</textarea>
+          `;
+
+          const textarea = textareaElement.querySelector("textarea");
+          textarea.addEventListener("input", (e) => {
+            userAnswers[currentQuestion] = e.target.value;
+            updateStats();
+          });
+
+          optionsContainer.appendChild(textareaElement);
+        } else {
+          // 客观题：显示选项
+          question.options.forEach((option, index) => {
+            const optionElement = document.createElement("div");
+            optionElement.className = "option";
+            optionElement.dataset.value = String.fromCharCode(65 + index);
+
+            const savedAnswer = userAnswers[currentQuestion];
+            if (savedAnswer === index) {
+              optionElement.classList.add("selected");
+            }
+
+            optionElement.innerHTML = `
+              <div class="option-label">${String.fromCharCode(65 + index)}</div>
+              <div class="option-text">${option}</div>
+            `;
+
+            optionElement.addEventListener("click", () => selectOption(index));
+            optionsContainer.appendChild(optionElement);
+          });
+        }
+
+        updateNavigation();
+        updateProgress();
+      }
+
+      // 选择选项
+      function selectOption(index) {
+        userAnswers[currentQuestion] = index;
+
+        // 更新UI
+        const options = document.querySelectorAll(".option");
+        options.forEach((option) => option.classList.remove("selected"));
+        options[index].classList.add("selected");
+
+        updateStats();
+      }
+
+      // 下一题
+      function nextQuestion() {
+        if (currentQuestion < questions.length - 1) {
+          currentQuestion++;
+          loadQuestion();
+        }
+      }
+
+      // 上一题
+      function prevQuestion() {
+        if (currentQuestion > 0) {
+          currentQuestion--;
+          loadQuestion();
+        }
+      }
+
+      // 更新导航按钮
+      function updateNavigation() {
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        prevBtn.disabled = currentQuestion === 0;
+
+        if (currentQuestion === questions.length - 1) {
+          nextBtn.style.display = "none";
+          submitBtn.style.display = "inline-block";
+        } else {
+          nextBtn.style.display = "inline-block";
+          submitBtn.style.display = "none";
+        }
+      }
+
+      // 更新进度条
+      function updateProgress() {
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById("progress-fill").style.width = progress + "%";
+        document.getElementById("current-question").textContent =
+          currentQuestion + 1;
+      }
+
+      // 更新统计信息
+      function updateStats() {
+        const answered = userAnswers.filter(
+          (answer) => answer !== undefined && answer !== null && answer !== ""
+        ).length;
+        const remaining = questions.length - answered;
+
+        document.getElementById("answered-count").textContent = answered;
+        document.getElementById("remaining-count").textContent = remaining;
+      }
+
+      // 开始计时器
+      function startTimer() {
+        timer = setInterval(() => {
+          timeLeft--;
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          document.getElementById("timer").textContent = `${minutes
+            .toString()
+            .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+          if (timeLeft <= 0) {
+            clearInterval(timer);
+            submitQuiz();
+          }
+        }, 1000);
+      }
+
+      // 提交答题
+      function submitQuiz() {
+        clearInterval(timer);
+
+        const endTime = Date.now();
+        const totalTime = Math.floor((endTime - startTime) / 1000);
+        const minutes = Math.floor(totalTime / 60);
+        const seconds = totalTime % 60;
+
+        let correctCount = 0;
+
+        if (mode === "team") {
+          // 团体赛主观题，无法自动评分
+          correctCount = 0;
+        } else {
+          // 个人赛客观题，自动评分
+          questions.forEach((question, index) => {
+            if (userAnswers[index] === question.correct) {
+              correctCount++;
+            }
+          });
+        }
+
+        const wrongCount = questions.length - correctCount;
+        const percentage = Math.round((correctCount / questions.length) * 100);
+
+        // 显示结果
+        document.getElementById("quiz-content").style.display = "none";
+        document.getElementById("result-section").style.display = "block";
+
+        document.getElementById("final-score").textContent =
+          mode === "team" ? "已提交" : `${percentage}%`;
+        document.getElementById("result-total").textContent = questions.length;
+        document.getElementById("result-correct").textContent =
+          mode === "team" ? "待评分" : correctCount;
+        document.getElementById("result-wrong").textContent =
+          mode === "team" ? "待评分" : wrongCount;
+        document.getElementById("result-time").textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      }
+
+      // 事件监听
+      document.getElementById("start-btn").addEventListener("click", startQuiz);
+      document
+        .getElementById("next-btn")
+        .addEventListener("click", nextQuestion);
+      document
+        .getElementById("prev-btn")
+        .addEventListener("click", prevQuestion);
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", submitQuiz);
+
+      // 键盘快捷键
+      document.addEventListener("keydown", (e) => {
+        if (e.key >= "1" && e.key <= "4") {
+          const index = parseInt(e.key) - 1;
+          if (index < questions[currentQuestion].options.length) {
+            selectOption(index);
+          }
+        } else if (e.key === "ArrowLeft") {
+          prevQuestion();
+        } else if (e.key === "ArrowRight") {
+          nextQuestion();
+        }
+      });
+
+      // 启动应用
+      init();
+    </script>
+  </body>
+</html>

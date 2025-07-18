@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>在线答题系统入口</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url("data/index.png") no-repeat center center fixed;
+        background-size: 100% 100%;
+        font-family: Arial, sans-serif;
+        position: relative;
+      }
+      .click-area {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .click-area:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .left-area {
+        left: 0;
+      }
+      .right-area {
+        right: 0;
+      }
+      .tooltip {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="personal.html" class="click-area left-area"></a>
+    <a href="team.html" class="click-area right-area"></a>
+    <div class="tooltip">点击左侧进入个人赛，点击右侧进入团体赛</div>
+  </body>
+</html>
