@@ -20,7 +20,7 @@
       }
 
       .container {
-        margin-top: 13%;
+        margin-top: 15%;
         margin-left: 7%;
         width: 86%;
         height: 67vh;
@@ -81,7 +81,7 @@
       }
 
       .question-card.shuffling {
-        animation: shuffle 0.3s ease-in-out;
+        animation: flip 0.6s ease-in-out infinite;
         background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
       }
 
@@ -95,6 +95,18 @@
       .question-card.dimmed {
         opacity: 0.3;
         transform: scale(0.95);
+      }
+
+      .question-card.used {
+        background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        opacity: 0.5;
+        transform: scale(0.9);
+        pointer-events: none;
+      }
+
+      .question-card.used .card-number {
+        text-decoration: line-through;
+        color: #adb5bd;
       }
 
       .draw-btn {
@@ -126,19 +138,15 @@
       }
 
       /* 动画关键帧 */
-      @keyframes shuffle {
-        0%,
-        100% {
-          transform: translateY(0) rotateY(0);
-        }
-        25% {
-          transform: translateY(-10px) rotateY(-15deg);
+      @keyframes flip {
+        0% {
+          transform: rotateY(0deg);
         }
         50% {
-          transform: translateY(-5px) rotateY(15deg);
+          transform: rotateY(180deg);
         }
-        75% {
-          transform: translateY(-15px) rotateY(-10deg);
+        100% {
+          transform: rotateY(360deg);
         }
       }
 
@@ -151,19 +159,92 @@
           box-shadow: 0 15px 40px rgba(46, 204, 113, 0.8);
         }
       }
+
+      /* 题目显示界面样式 */
+      .question-section {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .question-display {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 3%;
+        padding: 5%;
+        width: 90%;
+        height: 90%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        overflow-y: auto;
+      }
+
+      .question-title {
+        color: #333333;
+        font-size: 2em;
+        margin-bottom: 3%;
+        font-weight: bold;
+      }
+
+      .question-content {
+        color: #333333;
+        font-size: 1.3em;
+        line-height: 1.6;
+        margin-bottom: 4%;
+        text-align: left;
+        padding: 3%;
+        background: #f8f9fa;
+        border-radius: 2%;
+        border-left: 4px solid #667eea;
+        min-height: 50%;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .back-btn {
+        padding: 1.5% 4%;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        border: none;
+        border-radius: 2.5%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        min-width: 100px;
+        min-height: 40px;
+        margin-top: 3%;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="draw-section">
+      <div class="draw-section" id="drawSection">
         <div class="cards-container" id="cardsContainer">
           <!-- 题目卡片将在这里动态生成 -->
         </div>
         <button class="draw-btn" id="drawBtn">开始抽题</button>
       </div>
+      <div class="question-section" id="questionSection" style="display: none">
+        <div class="question-display">
+          <h2 class="question-title">题目内容</h2>
+          <div class="question-content" id="questionContent">
+            <!-- 题目内容将在这里显示 -->
+          </div>
+          <button class="back-btn" id="backBtn">返回抽题</button>
+        </div>
+      </div>
     </div>
     <script>
       let questions = [];
+      let usedQuestions = []; // 记录已抽过的题目索引
 
       // 读取team.json文件
       async function loadQuestions() {
@@ -186,8 +267,8 @@
           const card = document.createElement("div");
           card.className = "question-card";
           card.innerHTML = `
-            <div class="card-number">${index + 1}</div>
-          `;
+                  <div class="card-number">${index + 1}</div>
+                `;
           cardsContainer.appendChild(card);
         });
       }
@@ -198,6 +279,26 @@
       // 抽题动画
       function startDrawAnimation() {
         if (isDrawing || questions.length === 0) return;
+
+        // 检查是否所有题目都已抽完，如果是则重置
+        if (usedQuestions.length >= questions.length) {
+          usedQuestions = [];
+          // 重置所有卡片的视觉状态
+          const cards = document.querySelectorAll(".question-card");
+          cards.forEach((card) => {
+            card.classList.remove("used");
+          });
+        }
+
+        // 获取可用的题目索引
+        const availableIndexes = [];
+        for (let i = 0; i < questions.length; i++) {
+          if (!usedQuestions.includes(i)) {
+            availableIndexes.push(i);
+          }
+        }
+
+        if (availableIndexes.length === 0) return;
 
         isDrawing = true;
         const drawBtn = document.getElementById("drawBtn");
@@ -210,67 +311,115 @@
         const maxCount = 30; // 动画持续时间
 
         const interval = setInterval(() => {
-          // 重置所有卡片状态
-          cards.forEach((card) => {
+          // 重置所有卡片状态（除了已使用的）
+          cards.forEach((card, index) => {
             card.classList.remove("shuffling", "selected", "dimmed");
-          });
-
-          // 随机选择几张卡片进行洗牌动画
-          const shuffleCount = Math.min(3, cards.length);
-          const shuffleIndices = [];
-          while (shuffleIndices.length < shuffleCount) {
-            const randomIndex = Math.floor(Math.random() * cards.length);
-            if (!shuffleIndices.includes(randomIndex)) {
-              shuffleIndices.push(randomIndex);
+            if (usedQuestions.includes(index)) {
+              card.classList.add("used");
             }
-          }
-
-          shuffleIndices.forEach((index) => {
-            cards[index].classList.add("shuffling");
           });
+
+          // 从可用题目中随机选择一张卡片进行翻转动画
+          const randomAvailableIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+          cards[randomAvailableIndex].classList.add("shuffling");
 
           counter++;
           if (counter >= maxCount) {
             clearInterval(interval);
-            const finalIndex = Math.floor(Math.random() * questions.length);
+            const finalIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
             finishDraw(finalIndex);
           }
-        }, 150);
+        }, 100);
       }
 
       // 完成抽题
       function finishDraw(questionIndex) {
         selectedQuestionIndex = questionIndex;
+        // 将选中的题目添加到已使用列表
+        usedQuestions.push(questionIndex);
+        
         const drawBtn = document.getElementById("drawBtn");
         const cards = document.querySelectorAll(".question-card");
 
         // 重置所有卡片状态
-        cards.forEach((card) => {
+        cards.forEach((card, index) => {
           card.classList.remove("shuffling");
-          card.classList.add("dimmed");
+          if (usedQuestions.includes(index)) {
+            card.classList.add("used");
+          } else {
+            card.classList.add("dimmed");
+          }
         });
 
         // 高亮选中的卡片
         const selectedCard = cards[questionIndex];
-        selectedCard.classList.remove("dimmed");
+        selectedCard.classList.remove("dimmed", "used");
         selectedCard.classList.add("selected");
 
-        setTimeout(() => {
-          // 重新启用按钮，允许再次抽题
-          drawBtn.disabled = false;
-          drawBtn.textContent = "重新抽题";
-          // 重置所有卡片状态
-          cards.forEach((card) => {
-            card.classList.remove("shuffling", "selected", "dimmed");
-          });
-          isDrawing = false;
-        }, 3000);
+        // 重新启用按钮，改为开始答题
+        drawBtn.disabled = false;
+        drawBtn.textContent = "开始答题";
+        isDrawing = false;
+
+        // 添加开始答题的事件监听
+        drawBtn.removeEventListener("click", startDrawAnimation);
+        drawBtn.addEventListener("click", showQuestion);
+      }
+
+      // 显示题目内容
+      function showQuestion() {
+        if (selectedQuestionIndex === -1) return;
+
+        const drawSection = document.getElementById("drawSection");
+        const questionSection = document.getElementById("questionSection");
+        const questionContent = document.getElementById("questionContent");
+
+        // 隐藏抽题界面，显示题目界面
+        drawSection.style.display = "none";
+        questionSection.style.display = "flex";
+
+        // 显示选中的题目内容
+        const selectedQuestion = questions[selectedQuestionIndex];
+        questionContent.textContent = selectedQuestion.question;
+      }
+
+      // 返回抽题界面
+      function backToDraw() {
+        const drawSection = document.getElementById("drawSection");
+        const questionSection = document.getElementById("questionSection");
+        const drawBtn = document.getElementById("drawBtn");
+
+        // 显示抽题界面，隐藏题目界面
+        drawSection.style.display = "block";
+        questionSection.style.display = "none";
+
+        // 重置按钮状态
+        const remainingQuestions = questions.length - usedQuestions.length;
+        if (remainingQuestions > 0) {
+          drawBtn.textContent = `重新抽题 (剩余${remainingQuestions}题)`;
+        } else {
+          drawBtn.textContent = "重新抽题 (将重置所有题目)";
+        }
+        drawBtn.removeEventListener("click", showQuestion);
+        drawBtn.addEventListener("click", startDrawAnimation);
+
+        // 重置选中状态，但保持已使用题目的状态
+        selectedQuestionIndex = -1;
+        const cards = document.querySelectorAll(".question-card");
+        cards.forEach((card, index) => {
+          card.classList.remove("shuffling", "selected", "dimmed");
+          if (usedQuestions.includes(index)) {
+            card.classList.add("used");
+          }
+        });
       }
 
       // 事件监听
       document
         .getElementById("drawBtn")
         .addEventListener("click", startDrawAnimation);
+
+      document.getElementById("backBtn").addEventListener("click", backToDraw);
 
       // 页面加载时读取题目
       window.addEventListener("DOMContentLoaded", loadQuestions);
