@@ -23,7 +23,7 @@
         margin-top: 15%;
         margin-left: 7%;
         width: 86%;
-        height: 67vh;
+        height: 63vh;
       }
 
       .draw-section {
@@ -320,13 +320,19 @@
           });
 
           // 从可用题目中随机选择一张卡片进行翻转动画
-          const randomAvailableIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+          const randomAvailableIndex =
+            availableIndexes[
+              Math.floor(Math.random() * availableIndexes.length)
+            ];
           cards[randomAvailableIndex].classList.add("shuffling");
 
           counter++;
           if (counter >= maxCount) {
             clearInterval(interval);
-            const finalIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+            const finalIndex =
+              availableIndexes[
+                Math.floor(Math.random() * availableIndexes.length)
+              ];
             finishDraw(finalIndex);
           }
         }, 100);
@@ -337,7 +343,7 @@
         selectedQuestionIndex = questionIndex;
         // 将选中的题目添加到已使用列表
         usedQuestions.push(questionIndex);
-        
+
         const drawBtn = document.getElementById("drawBtn");
         const cards = document.querySelectorAll(".question-card");
 
@@ -424,5 +430,12 @@
       // 页面加载时读取题目
       window.addEventListener("DOMContentLoaded", loadQuestions);
     </script>
+    <div style="text-align: center; margin-top: 70px; padding: 10px">
+      <a
+        href="index.html"
+        style="color: #f6f4f4; text-decoration: none; font-size: 14px"
+        >返回首页</a
+      >
+    </div>
   </body>
 </html>

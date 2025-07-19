@@ -23,7 +23,7 @@
         margin-top: 15%;
         margin-left: 7%;
         width: 86%;
-        height: 67vh;
+        height: 63vh;
       }
 
       .draw-section {
@@ -178,36 +178,18 @@
         justify-content: center;
       }
 
-      .question-display {
+      .question-content {
         background: rgba(255, 255, 255, 0.95);
         border-radius: 3%;
-        padding: 5%;
+        padding: 3%;
         width: 90%;
-        height: 90%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         text-align: center;
         overflow-y: auto;
-      }
-
-      .question-title {
-        color: #333333;
-        font-size: 2em;
-        margin-bottom: 3%;
-        font-weight: bold;
-      }
-
-      .question-content {
         color: #333333;
         font-size: 1.3em;
         line-height: 1.6;
-        margin-bottom: 4%;
-        text-align: left;
-        padding: 3%;
-        background: #f8f9fa;
-        border-radius: 2%;
-        border-left: 4px solid #667eea;
-        min-height: 50%;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
       }
 
       .question-item {
@@ -220,16 +202,16 @@
       }
 
       .question-number {
-        font-size: 1.1em;
         font-weight: bold;
-        color: #667eea;
-        margin-bottom: 10px;
+        color: #007bff;
+        margin-right: 10px;
       }
 
       .question-text {
-        font-size: 1.1em;
-        margin-bottom: 15px;
-        color: #333333;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #333;
         font-weight: 500;
       }
 
@@ -253,25 +235,420 @@
         border-left: 3px solid #28a745;
       }
 
-      .back-btn {
-        padding: 1.5% 4%;
-        font-size: 1.1em;
-        font-weight: bold;
+      /* 题目头部样式 */
+      .question-progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
         color: white;
-        background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
-        border: none;
-        border-radius: 2.5%;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .current-question {
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      .total-questions {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        overflow: hidden;
+        min-width: 150px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4caf50, #45a049);
+        border-radius: 4px;
+        transition: width 0.5s ease;
+      }
+
+      .question-type-badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      /* 当前题目内容样式 */
+      .current-question-content {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        border-left: 4px solid #667eea;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: #f8f9fa;
+        border: 2px solid transparent;
+        border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        position: relative;
+      }
+
+      .option-item:hover {
+        background: #e9ecef;
+        border-color: #007bff;
+        transform: translateX(5px);
+      }
+
+      .option-item.selected {
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        border-color: #2196f3;
+        color: #1565c0;
+        font-weight: 600;
+      }
+
+      /* 多选题样式 */
+      .option-item.multiple-choice::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 2px solid #ccc;
+        border-radius: 3px;
+        margin-right: 8px;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .option-item.multiple-choice.selected::before {
+        background: #4caf50;
+        border-color: #4caf50;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+        background-size: 12px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      /* 单选题样式 */
+      .option-item.single-choice::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        margin-right: 8px;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .option-item.single-choice.selected::before {
+        border-color: #4caf50;
+        background: #4caf50;
+        box-shadow: inset 0 0 0 3px white;
+      }
+
+      .option-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: #007bff;
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        margin-right: 15px;
+        font-size: 14px;
+      }
+
+      .option-item.selected .option-label {
+        background: #2196f3;
+      }
+
+      .option-text {
+        flex: 1;
+        line-height: 1.5;
+      }
+
+      /* 题目控制按钮样式 */
+      .question-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .question-progress-inline {
+        flex: 1;
+        min-width: 200px;
+        margin: 0 15px;
+      }
+
+      .question-progress-inline .question-progress {
+        margin-bottom: 0;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      .question-progress-inline .current-question {
+        font-size: 18px;
+      }
+
+      .question-progress-inline .progress-bar {
         min-width: 100px;
-        min-height: 40px;
-        margin-top: 3%;
+      }
+
+      .prev-btn,
+      .next-btn,
+      .finish-btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 120px;
+      }
+
+      .prev-btn {
+        background: #6c757d;
+        color: white;
+      }
+
+      .prev-btn:hover:not(:disabled) {
+        background: #5a6268;
+        transform: translateY(-2px);
+      }
+
+      .prev-btn:disabled {
+        background: #e9ecef;
+        color: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .next-btn {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+      }
+
+      .next-btn:hover {
+        background: linear-gradient(135deg, #218838, #1ea080);
+        transform: translateY(-2px);
+      }
+
+      .finish-btn {
+        background: linear-gradient(135deg, #dc3545, #e83e8c);
+        color: white;
+      }
+
+      .finish-btn:hover {
+        background: linear-gradient(135deg, #c82333, #d91a72);
+        transform: translateY(-2px);
+      }
+
+      /* 结果显示样式 */
+      .results-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .results-header h2 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 28px;
+      }
+
+      .score-summary {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .score-circle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        color: white;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+
+      .score-text {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .score-number {
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      .score-total {
+        font-size: 18px;
+        opacity: 0.9;
+      }
+
+      .results-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 30px 0;
+        padding: 0 20px;
+      }
+
+      .result-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .result-card.correct {
+        border-color: #4caf50;
+        background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+      }
+
+      .result-card.incorrect {
+        border-color: #f44336;
+        background: linear-gradient(135deg, #ffeaea 0%, #ffebee 100%);
+      }
+
+      .result-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .question-number {
+        font-weight: 600;
+        font-size: 16px;
+        color: #333;
+      }
+
+      .result-icon {
+        font-size: 24px;
+        font-weight: bold;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .question-type-tag {
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.1);
+        color: #666;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .results-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .restart-btn {
+        background: linear-gradient(135deg, #4ade80, #22c55e);
+        color: white;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+        min-width: 160px;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .restart-btn:hover {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);
+      }
+
+      .restart-btn:active {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+      }
+
+      .back-btn {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: white;
+        padding: 16px 32px;
+        border: 2px solid #f59e0b;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+        min-width: 160px;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background-clip: padding-box;
       }
 
       .back-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        background: transparent;
+        color: #f59e0b;
+        border-color: #f59e0b;
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+      }
+
+      .back-btn:active {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
       }
     </style>
   </head>
@@ -284,12 +661,8 @@
         <button class="draw-btn" id="drawBtn">开始抽题</button>
       </div>
       <div class="question-section" id="questionSection" style="display: none">
-        <div class="question-display">
-          <h2 class="question-title">题目内容</h2>
-          <div class="question-content" id="questionContent">
-            <!-- 题目内容将在这里显示 -->
-          </div>
-          <button class="back-btn" id="backBtn">返回抽题</button>
+        <div class="question-content" id="questionContent">
+          <!-- 题目内容将在这里显示 -->
         </div>
       </div>
     </div>
@@ -484,46 +857,300 @@
         drawBtn.addEventListener("click", showQuestion);
       }
 
+      // 题目状态管理
+      let currentQuestionIndex = 0;
+      let userAnswers = [];
+      let currentQuestions = [];
+
       // 显示题包内容
       function showQuestion() {
         if (selectedPackIndex === -1) return;
 
         const drawSection = document.getElementById("drawSection");
         const questionSection = document.getElementById("questionSection");
-        const questionContent = document.getElementById("questionContent");
 
         // 隐藏抽题界面，显示题目界面
         drawSection.style.display = "none";
         questionSection.style.display = "flex";
 
-        // 显示选中的题包内容
+        // 初始化题目数据
         const selectedPack = questionPacks[selectedPackIndex];
+        currentQuestions = selectedPack.questions;
+        currentQuestionIndex = 0;
+        // 初始化用户答案数组，多选题用数组，单选题和判断题用单个值
+        userAnswers = currentQuestions.map((q) =>
+          q.type === "多选题" ? [] : null
+        );
 
-        let contentHTML = "";
-        selectedPack.questions.forEach((question, index) => {
-          contentHTML += `
-            <div class="question-item">
-              <div class="question-number">第${index + 1}题 (${
-            question.type
-          })</div>
-              <div class="question-text">${question.question}</div>
-              <div class="question-options">
-                ${question.options
-                  .map(
-                    (option, optIndex) =>
-                      `<div class="option ${
-                        option.includes("✓") ? "correct" : ""
-                      }">${String.fromCharCode(
-                        65 + optIndex
-                      )}. ${option.replace("✓", "")}</div>`
-                  )
-                  .join("")}
-              </div>
+        displayCurrentQuestion();
+      }
+
+      function displayCurrentQuestion() {
+        const question = currentQuestions[currentQuestionIndex];
+        const totalQuestions = currentQuestions.length;
+        const questionContent = document.getElementById("questionContent");
+
+        // 生成进度条HTML
+        let progressHtml = `
+            <span class="current-question">第 ${
+              currentQuestionIndex + 1
+            } 题</span>
+            <span class="total-questions">共 ${totalQuestions} 题</span>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${
+                ((currentQuestionIndex + 1) / totalQuestions) * 100
+              }%"></div>
+            </div>
+            <div class="question-type-badge">${question.type}</div>
+        `;
+
+        // 生成题目内容HTML
+        let html = `
+          <div class="current-question-content">
+            <div class="question-text">${question.question}</div>
+            <div class="options">
+        `;
+
+        question.options.forEach((option, optionIndex) => {
+          let displayText = "";
+
+          // 兼容新旧数据格式
+          if (typeof option === "string") {
+            displayText = option.replace("✓", "").trim();
+          } else if (typeof option === "object" && option.text) {
+            displayText = option.text;
+          }
+
+          const optionLabel = String.fromCharCode(65 + optionIndex);
+          const currentAnswer = userAnswers[currentQuestionIndex];
+          let selectedClass = "";
+          let typeClass = "";
+
+          // 根据题目类型判断选中状态和样式类
+          if (question.type === "多选题") {
+            selectedClass =
+              Array.isArray(currentAnswer) &&
+              currentAnswer.includes(optionIndex)
+                ? " selected"
+                : "";
+            typeClass = " multiple-choice";
+          } else {
+            selectedClass = currentAnswer === optionIndex ? " selected" : "";
+            typeClass = " single-choice";
+          }
+
+          html += `
+            <div class="option-item${typeClass}${selectedClass}" onclick="selectOption(${optionIndex})">
+              <span class="option-label">${optionLabel}</span>
+              <span class="option-text">${displayText}</span>
             </div>
           `;
         });
 
-        questionContent.innerHTML = contentHTML;
+        html += `
+            </div>
+          </div>
+          
+          <div class="question-controls">
+            <button class="prev-btn" onclick="previousQuestion()" ${
+              currentQuestionIndex === 0 ? "disabled" : ""
+            }>上一题</button>
+            <div class="question-progress-inline">
+              ${progressHtml}
+            </div>
+            <button class="next-btn" onclick="nextQuestion()" ${
+              currentQuestionIndex === totalQuestions - 1
+                ? 'style="display:none"'
+                : ""
+            }>${
+          hasAnswered(currentQuestionIndex) ? "下一题" : "请选择答案"
+        }</button>
+            <button class="finish-btn" onclick="finishQuiz()" ${
+              currentQuestionIndex === totalQuestions - 1 &&
+              hasAnswered(currentQuestionIndex)
+                ? ""
+                : 'style="display:none"'
+            }>完成答题</button>
+          </div>
+        `;
+
+        questionContent.innerHTML = html;
+      }
+
+      function selectOption(optionIndex) {
+        const question = currentQuestions[currentQuestionIndex];
+
+        if (question.type === "多选题") {
+          // 多选题逻辑
+          if (!Array.isArray(userAnswers[currentQuestionIndex])) {
+            userAnswers[currentQuestionIndex] = [];
+          }
+
+          const currentAnswers = userAnswers[currentQuestionIndex];
+          const optionIndex_num = optionIndex;
+
+          if (currentAnswers.includes(optionIndex_num)) {
+            // 如果已选中，则取消选择
+            userAnswers[currentQuestionIndex] = currentAnswers.filter(
+              (idx) => idx !== optionIndex_num
+            );
+          } else {
+            // 如果未选中，则添加选择
+            userAnswers[currentQuestionIndex].push(optionIndex_num);
+          }
+        } else {
+          // 单选题和判断题逻辑
+          userAnswers[currentQuestionIndex] = optionIndex;
+        }
+
+        displayCurrentQuestion();
+      }
+
+      function nextQuestion() {
+        if (
+          hasAnswered(currentQuestionIndex) &&
+          currentQuestionIndex < currentQuestions.length - 1
+        ) {
+          currentQuestionIndex++;
+          displayCurrentQuestion();
+        }
+      }
+
+      // 检查当前题目是否已作答
+      function hasAnswered(questionIndex) {
+        const answer = userAnswers[questionIndex];
+        const question = currentQuestions[questionIndex];
+
+        if (question.type === "多选题") {
+          return Array.isArray(answer) && answer.length > 0;
+        } else {
+          return answer !== null;
+        }
+      }
+
+      function previousQuestion() {
+        if (currentQuestionIndex > 0) {
+          currentQuestionIndex--;
+          displayCurrentQuestion();
+        }
+      }
+
+      function finishQuiz() {
+        if (hasAnswered(currentQuestionIndex)) {
+          showResults();
+        }
+      }
+
+      function showResults() {
+        let correctCount = 0;
+
+        // 显示得分和题目卡片
+        let html = `
+          <div class="results-header">
+            <h2>答题结果</h2>
+            <div class="score-summary">
+              <div class="score-circle">
+                <span class="score-text">得分</span>
+                <span class="score-number" id="final-score">0</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="results-cards">
+        `;
+
+        // 生成每道题的结果卡片
+        currentQuestions.forEach((question, questionIndex) => {
+          const userAnswer = userAnswers[questionIndex];
+          let correctAnswers = [];
+          let isCorrect = false;
+
+          // 找到所有正确答案
+          question.options.forEach((option, optionIndex) => {
+            let isCorrectOption = false;
+            if (typeof option === "string") {
+              isCorrectOption = option.includes("✓");
+            } else if (typeof option === "object" && option.text) {
+              isCorrectOption = option.is_correct;
+            }
+            if (isCorrectOption) {
+              correctAnswers.push(optionIndex);
+            }
+          });
+
+          // 根据题目类型判断答案是否正确
+          if (question.type === "多选题") {
+            if (Array.isArray(userAnswer) && correctAnswers.length > 0) {
+              const sortedUserAnswer = [...userAnswer].sort();
+              const sortedCorrectAnswers = [...correctAnswers].sort();
+              isCorrect =
+                JSON.stringify(sortedUserAnswer) ===
+                JSON.stringify(sortedCorrectAnswers);
+            }
+          } else {
+            isCorrect =
+              correctAnswers.length > 0 && userAnswer === correctAnswers[0];
+          }
+
+          if (isCorrect) correctCount++;
+
+          const cardClass = isCorrect ? "correct" : "incorrect";
+          const cardIcon = isCorrect ? "✓" : "✗";
+          const cardColor = isCorrect ? "#4caf50" : "#f44336";
+
+          html += `
+            <div class="result-card ${cardClass}">
+              <div class="card-header">
+                <span class="question-number">第${questionIndex + 1}题</span>
+                <span class="result-icon" style="color: ${cardColor}">${cardIcon}</span>
+              </div>
+              <div class="question-type-tag">${question.type}</div>
+            </div>
+          `;
+        });
+
+        html += `
+          </div>
+          
+          <div class="results-actions">
+            <button class="restart-btn" onclick="restartQuiz()">重新答题</button>
+            <button class="back-btn" onclick="backToDraw()">返回抽题</button>
+          </div>
+        `;
+
+        document.getElementById("questionContent").innerHTML = html;
+
+        // 更新得分显示
+        document.getElementById("final-score").textContent = correctCount;
+
+        // 显示结果页面
+        document.getElementById("questionSection").style.display = "flex";
+        document.getElementById("drawSection").style.display = "none";
+
+        // 动画显示得分
+        setTimeout(() => {
+          const scoreElement = document.getElementById("final-score");
+          let currentScore = 0;
+          const targetScore = correctCount;
+          const increment = targetScore > 0 ? 1 : 0;
+
+          const scoreAnimation = setInterval(() => {
+            if (currentScore >= targetScore) {
+              clearInterval(scoreAnimation);
+            } else {
+              currentScore += increment;
+              scoreElement.textContent = currentScore;
+            }
+          }, 100);
+        }, 500);
+      }
+
+      function restartQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = currentQuestions.map((q) =>
+          q.type === "多选题" ? [] : null
+        );
+        displayCurrentQuestion();
       }
 
       // 返回抽题界面
@@ -563,13 +1190,17 @@
         document
           .getElementById("drawBtn")
           .addEventListener("click", startDrawAnimation);
-        document
-          .getElementById("backBtn")
-          .addEventListener("click", backToDraw);
       }
 
       // 页面加载时初始化
       window.addEventListener("DOMContentLoaded", init);
     </script>
+    <div style="text-align: center; margin-top: 70px; padding: 10px">
+      <a
+        href="index.html"
+        style="color: #f6f4f4; text-decoration: none; font-size: 14px"
+        >返回首页</a
+      >
+    </div>
   </body>
 </html>

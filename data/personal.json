@@ -4,19 +4,19 @@
             "question": "E化出单时，健康委托投保任务列表如显示为“投保出错”，以下哪种说法错误",
             "options": [
                 {
-                    "text": "A.表示核心系统投保规则校验不通过",
+                    "text": "表示核心系统投保规则校验不通过",
                     "is_correct": false
                 },
                 {
-                    "text": "B.会显示在“E化问题件作台”，可在录入页面的底部 “查看错误信息”。",
+                    "text": "会显示在“E化问题件作台”，可在录入页面的底部 “查看错误信息”。",
                     "is_correct": false
                 },
                 {
-                    "text": "C.支持操作包括：查看报错原因、编辑投保单信息、重新投保、作废、复制、（客户交费）；",
+                    "text": "支持操作包括：查看报错原因、编辑投保单信息、重新投保、作废、复制、（客户交费）；",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 由核保岗或承保审核岗以问题件形式退回",
+                    "text": " 由核保岗或承保审核岗以问题件形式退回",
                     "is_correct": true
                 }
             ]
@@ -25,19 +25,19 @@
             "question": "企业HR通过企业宝PC端确认出单信息共需五步，依次为",
             "options": [
                 {
-                    "text": "A.方案内容确认、基础信息确认、服务项目开通确认、人员清单确认、交费账户及发票信息确认",
+                    "text": "方案内容确认、基础信息确认、服务项目开通确认、人员清单确认、交费账户及发票信息确认",
                     "is_correct": false
                 },
                 {
-                    "text": "B.服务项目开通确认、基础信息确认、方案内容确认、人员清单确认、交费账户及发票信息确认",
+                    "text": "服务项目开通确认、基础信息确认、方案内容确认、人员清单确认、交费账户及发票信息确认",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 基础信息确认、方案内容确认、人员清单确认、服务项目开通确认、交费账户及发票信息确认",
+                    "text": " 基础信息确认、方案内容确认、人员清单确认、服务项目开通确认、交费账户及发票信息确认",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 方案内容确认、人员清单确认、基础信息确认、交费账户及发票信息确认、服务项目开通确认",
+                    "text": " 方案内容确认、人员清单确认、基础信息确认、交费账户及发票信息确认、服务项目开通确认",
                     "is_correct": false
                 }
             ]
@@ -46,19 +46,19 @@
             "question": "关于个人账户与个人授信额度说法正确的是",
             "options": [
                 {
-                    "text": "A.个人授信额度使用上限以个人账户资金余额与集体账户资金余额的较小者为准",
+                    "text": "个人授信额度使用上限以个人账户资金余额与集体账户资金余额的较小者为准",
                     "is_correct": false
                 },
                 {
-                    "text": "B.个人账户额度是指委托人授权（分配）给受益人能使用的集体账户的额度",
+                    "text": "个人账户额度是指委托人授权（分配）给受益人能使用的集体账户的额度",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 仅当责任定义环节将“共用保障类型”设置为“授信共用”，才可以维护个人授信额度",
+                    "text": " 仅当责任定义环节将“共用保障类型”设置为“授信共用”，才可以维护个人授信额度",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 健康卡直付服务仅限于使用个人账户额度",
+                    "text": " 健康卡直付服务仅限于使用个人账户额度",
                     "is_correct": false
                 }
             ]
@@ -67,19 +67,19 @@
             "question": "健康委托产品在企康体系中的角色是什么？",
             "options": [
                 {
-                    "text": "A.提供企业贷款服务",
+                    "text": "提供企业贷款服务",
                     "is_correct": false
                 },
                 {
-                    "text": "B.作为资金支付的重要载体，形成“服务+支付”的闭环",
+                    "text": "作为资金支付的重要载体，形成“服务+支付”的闭环",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 提供企业员工培训",
+                    "text": " 提供企业员工培训",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 提供企业法律咨询",
+                    "text": " 提供企业法律咨询",
                     "is_correct": false
                 }
             ]
@@ -88,15 +88,15 @@
             "question": "保险公司开展健康保障委托管理业务，委托人将委托资金划归保险公司管理的，保险公司应当设立单独账户管理资金，专款专用，支付限额为",
             "options": [
                 {
-                    "text": "A.委托资金+活期利率对应利息",
+                    "text": "委托资金+活期利率对应利息",
                     "is_correct": true
                 },
                 {
-                    "text": "B.委托资金+合同约定保底利率对应利息",
+                    "text": "委托资金+合同约定保底利率对应利息",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 委托资金+一年期存款利率对应利息",
+                    "text": " 委托资金+一年期存款利率对应利息",
                     "is_correct": false
                 }
             ]
@@ -105,15 +105,15 @@
             "question": "保险公司开展健康委托业务，可以与客户约定的合同期限是",
             "options": [
                 {
-                    "text": "A.仅可约定一年期及以内",
+                    "text": "仅可约定一年期及以内",
                     "is_correct": false
                 },
                 {
-                    "text": "B.仅可约定长期有效",
+                    "text": "仅可约定长期有效",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 不确定期限，具体以合同约定为准",
+                    "text": " 不确定期限，具体以合同约定为准",
                     "is_correct": true
                 }
             ]
@@ -122,19 +122,19 @@
             "question": "以下哪个关于健康保障委托业务的账户设立说法是对的？",
             "options": [
                 {
-                    "text": "A.企业不可自主分配集体账户和个人账户的资金",
+                    "text": "企业不可自主分配集体账户和个人账户的资金",
                     "is_correct": false
                 },
                 {
-                    "text": "B.企业集体账户和个人账户的资金分配有严格的比例要求",
+                    "text": "企业集体账户和个人账户的资金分配有严格的比例要求",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 企业可自由分配集体账户和个人账户资金比例",
+                    "text": " 企业可自由分配集体账户和个人账户资金比例",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 企业集体账户不参与正常结息",
+                    "text": " 企业集体账户不参与正常结息",
                     "is_correct": false
                 }
             ]
@@ -143,15 +143,15 @@
             "question": "补充医疗中最有助于提升客户关键人群直接关系的服务是",
             "options": [
                 {
-                    "text": "A.理赔服务",
+                    "text": "理赔服务",
                     "is_correct": false
                 },
                 {
-                    "text": "B.保全服务",
+                    "text": "保全服务",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 健管服务",
+                    "text": " 健管服务",
                     "is_correct": true
                 }
             ]
@@ -160,19 +160,19 @@
             "question": "关于健康保障委托产品的描述，以下说法错误的是",
             "options": [
                 {
-                    "text": "A.健康保障委托管理产品需要与客户签订保单",
+                    "text": "健康保障委托管理产品需要与客户签订保单",
                     "is_correct": true
                 },
                 {
-                    "text": "B.客户交纳的是委托我司代为管理的自有资金，托管资金直接进入银行进行托管，不支持开具发票",
+                    "text": "客户交纳的是委托我司代为管理的自有资金，托管资金直接进入银行进行托管，不支持开具发票",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 委托合同确定依据客户需求制定，在健康保障范围内即可，由核保确认系统录单责任",
+                    "text": " 委托合同确定依据客户需求制定，在健康保障范围内即可，由核保确认系统录单责任",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 企业委托保司管理并提供经办服务，按照企业报销规则对员工医疗费用补充报销",
+                    "text": " 企业委托保司管理并提供经办服务，按照企业报销规则对员工医疗费用补充报销",
                     "is_correct": false
                 }
             ]
@@ -181,19 +181,19 @@
             "question": "健康保障委托产品的缴费方式有",
             "options": [
                 {
-                    "text": "A.一次性趸缴",
+                    "text": "一次性趸缴",
                     "is_correct": false
                 },
                 {
-                    "text": "B.不定期缴费",
+                    "text": "不定期缴费",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 不定额缴费",
+                    "text": " 不定额缴费",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 以上均可",
+                    "text": " 以上均可",
                     "is_correct": true
                 }
             ]
@@ -202,19 +202,19 @@
             "question": "关于健康委托产品个人账户以下说法错误的是",
             "options": [
                 {
-                    "text": "A.可设置虚拟账户个人授信模式",
+                    "text": "可设置虚拟账户个人授信模式",
                     "is_correct": false
                 },
                 {
-                    "text": "B.线上消费与线下消费均可",
+                    "text": "线上消费与线下消费均可",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 产品服务包括健康消费和健康保健",
+                    "text": " 产品服务包括健康消费和健康保健",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 账户利息按比例分配给企业与员工",
+                    "text": " 账户利息按比例分配给企业与员工",
                     "is_correct": true
                 }
             ]
@@ -223,19 +223,19 @@
             "question": "关于健康委托监管规定以下说法正确的是",
             "options": [
                 {
-                    "text": "A.保险公司开展健康保障委托管理业务，委托人将委托资金划归保险公司管理的，如果结算年度内委托资金出现节余，节余部分必须要返还于委托人",
+                    "text": "保险公司开展健康保障委托管理业务，委托人将委托资金划归保险公司管理的，如果结算年度内委托资金出现节余，节余部分必须要返还于委托人",
                     "is_correct": false
                 },
                 {
-                    "text": "B.在为委托人提供健康保险产品时签订保险合同。",
+                    "text": "在为委托人提供健康保险产品时签订保险合同。",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 保险公司开展健康保障委托管理业务，收取的管理费用应当覆盖委托管理业务的各项成本。管理费用仅能按比例从委托资金中提取。",
+                    "text": " 保险公司开展健康保障委托管理业务，收取的管理费用应当覆盖委托管理业务的各项成本。管理费用仅能按比例从委托资金中提取。",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 保险公司不得对委托资金提供各种形式的增值保证",
+                    "text": " 保险公司不得对委托资金提供各种形式的增值保证",
                     "is_correct": true
                 }
             ]
@@ -244,15 +244,15 @@
             "question": "健康委托资金能给退休员工使用吗？",
             "options": [
                 {
-                    "text": "A.不可以给退休员工使用",
+                    "text": "不可以给退休员工使用",
                     "is_correct": false
                 },
                 {
-                    "text": "B.可以给退休员工使用",
+                    "text": "可以给退休员工使用",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 企业根据自身情况决定",
+                    "text": " 企业根据自身情况决定",
                     "is_correct": true
                 }
             ]
@@ -261,15 +261,15 @@
             "question": "企业补充医疗在三支柱中承担（）角色",
             "options": [
                 {
-                    "text": "A.第一支柱",
+                    "text": "第一支柱",
                     "is_correct": false
                 },
                 {
-                    "text": "B.第二支柱",
+                    "text": "第二支柱",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 第三支柱",
+                    "text": " 第三支柱",
                     "is_correct": false
                 }
             ]
@@ -278,15 +278,15 @@
             "question": "财社2002年18号文中规定，补充医疗保险费在工资总额（）以内的部分，企业可直接从成本中列支",
             "options": [
                 {
-                    "text": "A. 4%",
+                    "text": " 4%",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 5%",
+                    "text": " 5%",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 14%",
+                    "text": " 14%",
                     "is_correct": false
                 }
             ]
@@ -295,15 +295,15 @@
             "question": "企业委托资金是打入到以下哪个账户中运作",
             "options": [
                 {
-                    "text": "A.保险公司保费收入户",
+                    "text": "保险公司保费收入户",
                     "is_correct": false
                 },
                 {
-                    "text": "B.保险公司委托资金专户",
+                    "text": "保险公司委托资金专户",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 无特定账户要求",
+                    "text": " 无特定账户要求",
                     "is_correct": false
                 }
             ]
@@ -312,19 +312,19 @@
             "question": "与央国企合作福利类企业补充医疗，()是首要考虑",
             "options": [
                 {
-                    "text": "A.政策合规",
+                    "text": "政策合规",
                     "is_correct": true
                 },
                 {
-                    "text": "B.公平普惠",
+                    "text": "公平普惠",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 兼顾激励",
+                    "text": " 兼顾激励",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 服务周到",
+                    "text": " 服务周到",
                     "is_correct": false
                 }
             ]
@@ -333,19 +333,19 @@
             "question": "针对企业补充医疗中描述错误的是（）",
             "options": [
                 {
-                    "text": "A.主推健康委托+短期健康险组合，充分发挥保险杠杆、转移重大风险的同时，兼顾使用灵活性",
+                    "text": "主推健康委托+短期健康险组合，充分发挥保险杠杆、转移重大风险的同时，兼顾使用灵活性",
                     "is_correct": false
                 },
                 {
-                    "text": "B.健康委托产品仅支持全额开具收据",
+                    "text": "健康委托产品仅支持全额开具收据",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 长期医疗保险费率较高，健告相对严格",
+                    "text": " 长期医疗保险费率较高，健告相对严格",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 可自建自管，也可委托第三方管理",
+                    "text": " 可自建自管，也可委托第三方管理",
                     "is_correct": false
                 }
             ]
@@ -354,19 +354,19 @@
             "question": "以下关于健康委托的经营条件描述正确的是（）",
             "options": [
                 {
-                    "text": "A.符合《健康保险管理办法》规定的经营保险的条件，无须在本地设有分支机构或服务合作机构",
+                    "text": "符合《健康保险管理办法》规定的经营保险的条件，无须在本地设有分支机构或服务合作机构",
                     "is_correct": false
                 },
                 {
-                    "text": "B.符合《健康保险管理办法》规定的经营保险的条件，并在开办地区设有分支机构或服务合作机构",
+                    "text": "符合《健康保险管理办法》规定的经营保险的条件，并在开办地区设有分支机构或服务合作机构",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 符合《意外伤害保险业务监督办法》规定的经营保险的条件",
+                    "text": " 符合《意外伤害保险业务监督办法》规定的经营保险的条件",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 无须经营条件",
+                    "text": " 无须经营条件",
                     "is_correct": false
                 }
             ]
@@ -375,19 +375,19 @@
             "question": "在委托合同届满前，双方对续签无异议的自动延长（）年",
             "options": [
                 {
-                    "text": "A.1年",
+                    "text": "1年",
                     "is_correct": true
                 },
                 {
-                    "text": "B.2年",
+                    "text": "2年",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 3年",
+                    "text": " 3年",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 5年",
+                    "text": " 5年",
                     "is_correct": false
                 }
             ]
@@ -396,19 +396,19 @@
             "question": "以下关于授信模式描述错误的是（）",
             "options": [
                 {
-                    "text": "A.支持健康直付实现在企业集体账户中",
+                    "text": "支持健康直付实现在企业集体账户中",
                     "is_correct": false
                 },
                 {
-                    "text": "B.避免部分企业内部审计对“个人账户”等字样敏感",
+                    "text": "避免部分企业内部审计对“个人账户”等字样敏感",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 属于健康委托产品的特色功能之一",
+                    "text": " 属于健康委托产品的特色功能之一",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 委托商业保司等第三方承接，可按企业需求定制方案，灵活性高",
+                    "text": " 委托商业保司等第三方承接，可按企业需求定制方案，灵活性高",
                     "is_correct": true
                 }
             ]
@@ -417,15 +417,15 @@
             "question": "基本医疗缴费方式是什么？",
             "options": [
                 {
-                    "text": "A.单位缴费",
+                    "text": "单位缴费",
                     "is_correct": false
                 },
                 {
-                    "text": "B.个人缴费",
+                    "text": "个人缴费",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 单位和个人共同缴费",
+                    "text": " 单位和个人共同缴费",
                     "is_correct": true
                 }
             ]
@@ -434,19 +434,19 @@
             "question": "医保统筹账户报销范围是哪些？",
             "options": [
                 {
-                    "text": "A.门诊费用",
+                    "text": "门诊费用",
                     "is_correct": false
                 },
                 {
-                    "text": "B.住院费用",
+                    "text": "住院费用",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 大额医疗费用",
+                    "text": " 大额医疗费用",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 以上都是",
+                    "text": " 以上都是",
                     "is_correct": true
                 }
             ]
@@ -455,19 +455,19 @@
             "question": "以下哪项是会员制健康管理的高端服务？",
             "options": [
                 {
-                    "text": "A. 基础体检",
+                    "text": " 基础体检",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 海外就医体检",
+                    "text": " 海外就医体检",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 门诊挂号协助",
+                    "text": " 门诊挂号协助",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 药品配送",
+                    "text": " 药品配送",
                     "is_correct": false
                 }
             ]
@@ -476,19 +476,19 @@
             "question": "平安企业健康保障计划的合规保障措施不包括？",
             "options": [
                 {
-                    "text": "A. 供应商准入管控",
+                    "text": " 供应商准入管控",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 发票真伪鉴别",
+                    "text": " 发票真伪鉴别",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 自由定价机制",
+                    "text": " 自由定价机制",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 额度控制",
+                    "text": " 额度控制",
                     "is_correct": false
                 }
             ]
@@ -497,19 +497,19 @@
             "question": "健康委托业务的核心属性是？",
             "options": [
                 {
-                    "text": "A. 杠杆属性",
+                    "text": " 杠杆属性",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 投资属性",
+                    "text": " 投资属性",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 福利属性",
+                    "text": " 福利属性",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 税收优惠属性",
+                    "text": " 税收优惠属性",
                     "is_correct": false
                 }
             ]
@@ -518,19 +518,19 @@
             "question": "健康委托业务的监管依据是？",
             "options": [
                 {
-                    "text": "A. 银保监会13号文",
+                    "text": " 银保监会13号文",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 财税27号文",
+                    "text": " 财税27号文",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 《保险法》",
+                    "text": " 《保险法》",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 《劳动法》",
+                    "text": " 《劳动法》",
                     "is_correct": false
                 }
             ]
@@ -539,19 +539,19 @@
             "question": "健康委托业务的报销方式中，哪种最快？",
             "options": [
                 {
-                    "text": "A. 线下收单",
+                    "text": " 线下收单",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 企业统一支付",
+                    "text": " 企业统一支付",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 线上自助报销",
+                    "text": " 线上自助报销",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 邮寄纸质材料",
+                    "text": " 邮寄纸质材料",
                     "is_correct": false
                 }
             ]
@@ -560,19 +560,19 @@
             "question": "以下哪类机构可作为健康委托业务的创新客群？",
             "options": [
                 {
-                    "text": "A. 大型央企",
+                    "text": " 大型央企",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 中华全国总工会",
+                    "text": " 中华全国总工会",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 互联网平台型企业",
+                    "text": " 互联网平台型企业",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 公立医院",
+                    "text": " 公立医院",
                     "is_correct": false
                 }
             ]
@@ -581,19 +581,19 @@
             "question": "以下哪项属于慢病管理服务的内容？",
             "options": [
                 {
-                    "text": "A. 专家门诊预约",
+                    "text": " 专家门诊预约",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 家庭医生服务",
+                    "text": " 家庭医生服务",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 海外就医安排",
+                    "text": " 海外就医安排",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 旅游保险",
+                    "text": " 旅游保险",
                     "is_correct": false
                 }
             ]
@@ -602,19 +602,19 @@
             "question": "以下哪项是健康委托业务的核心优势？",
             "options": [
                 {
-                    "text": "A. 提供高收益理财产品",
+                    "text": " 提供高收益理财产品",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 智能审核与多样化报销",
+                    "text": " 智能审核与多样化报销",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 降低企业注册资本",
+                    "text": " 降低企业注册资本",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 扩大海外市场",
+                    "text": " 扩大海外市场",
                     "is_correct": false
                 }
             ]
@@ -623,15 +623,15 @@
             "question": "项目规模（）以上为重大项目，立项签报链需经一把手审批",
             "options": [
                 {
-                    "text": "A. 200万",
+                    "text": " 200万",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 500万",
+                    "text": " 500万",
                     "is_correct": false
                 },
                 {
-                    "text": "C.1000万",
+                    "text": "1000万",
                     "is_correct": true
                 }
             ]
@@ -640,15 +640,15 @@
             "question": "经办服费是打入到以下哪个账户中？",
             "options": [
                 {
-                    "text": "A. 保险公司保费收入户",
+                    "text": " 保险公司保费收入户",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 保险公司委托资金专户",
+                    "text": " 保险公司委托资金专户",
                     "is_correct": false
                 },
                 {
-                    "text": "C.无特定账户要求",
+                    "text": "无特定账户要求",
                     "is_correct": false
                 }
             ]
@@ -657,19 +657,19 @@
             "question": "《健康通团体健康保障委托管理产品》不支持以下哪种额度设置？",
             "options": [
                 {
-                    "text": "A. 集体保障额度",
+                    "text": " 集体保障额度",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 个人保障额度",
+                    "text": " 个人保障额度",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 家庭保障额度",
+                    "text": " 家庭保障额度",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 差异化个人额度",
+                    "text": " 差异化个人额度",
                     "is_correct": false
                 }
             ]
@@ -678,19 +678,19 @@
             "question": "关于委托资金管理，以下说法正确的是？",
             "options": [
                 {
-                    "text": "A. 节余资金需退还委托人",
+                    "text": " 节余资金需退还委托人",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 保险公司可提供固定收益承诺",
+                    "text": " 保险公司可提供固定收益承诺",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 委托资金与活期利息共同支付限额",
+                    "text": " 委托资金与活期利息共同支付限额",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 保险公司可垫付资金缺口",
+                    "text": " 保险公司可垫付资金缺口",
                     "is_correct": false
                 }
             ]
@@ -699,19 +699,19 @@
             "question": "下列哪类机构不可作为健康委托业务的委托人？",
             "options": [
                 {
-                    "text": "A. 地方工会",
+                    "text": " 地方工会",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 私营企业",
+                    "text": " 私营企业",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 国家机关",
+                    "text": " 国家机关",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 社会团体",
+                    "text": " 社会团体",
                     "is_correct": false
                 }
             ]
@@ -720,19 +720,19 @@
             "question": "健康委托产品的管理费用收取原则是？",
             "options": [
                 {
-                    "text": "A. 覆盖成本",
+                    "text": " 覆盖成本",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 盈利优先",
+                    "text": " 盈利优先",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 按员工职级阶梯收费",
+                    "text": " 按员工职级阶梯收费",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 免费服务",
+                    "text": " 免费服务",
                     "is_correct": false
                 }
             ]
@@ -741,19 +741,19 @@
             "question": "健康委托方案中，以下哪项属于集体保障额度用途？",
             "options": [
                 {
-                    "text": "A. 员工家属购药",
+                    "text": " 员工家属购药",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 个人重大疾病治疗",
+                    "text": " 个人重大疾病治疗",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 团体体检",
+                    "text": " 团体体检",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 员工子女教育",
+                    "text": " 员工子女教育",
                     "is_correct": false
                 }
             ]
@@ -762,19 +762,19 @@
             "question": "事业单位购买补充医疗的保费列支渠道是？",
             "options": [
                 {
-                    "text": "A. 工资总额",
+                    "text": " 工资总额",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 社会保障费",
+                    "text": " 社会保障费",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 企业所得税",
+                    "text": " 企业所得税",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 福利彩票",
+                    "text": " 福利彩票",
                     "is_correct": false
                 }
             ]
@@ -783,19 +783,19 @@
             "question": "平安健康委托业务支持的缴费方式是？",
             "options": [
                 {
-                    "text": "A. 仅限一次性趸缴",
+                    "text": " 仅限一次性趸缴",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 仅限按月分期",
+                    "text": " 仅限按月分期",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 一次性趸缴或不定期缴费",
+                    "text": " 一次性趸缴或不定期缴费",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 必须按年缴费",
+                    "text": " 必须按年缴费",
                     "is_correct": false
                 }
             ]
@@ -804,19 +804,19 @@
             "question": "健康委托业务的系统操作中，责任定义的核心作用是？",
             "options": [
                 {
-                    "text": "A. 确定保费金额",
+                    "text": " 确定保费金额",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 将保障内容转化为理赔规则",
+                    "text": " 将保障内容转化为理赔规则",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 审核企业资质",
+                    "text": " 审核企业资质",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 管理账户资金",
+                    "text": " 管理账户资金",
                     "is_correct": false
                 }
             ]
@@ -825,19 +825,19 @@
             "question": "委托资金的利息结算时间为每年（）月",
             "options": [
                 {
-                    "text": "A.1月",
+                    "text": "1月",
                     "is_correct": true
                 },
                 {
-                    "text": "B.3月",
+                    "text": "3月",
                     "is_correct": false
                 },
                 {
-                    "text": "C.6月",
+                    "text": "6月",
                     "is_correct": false
                 },
                 {
-                    "text": "D.12月",
+                    "text": "12月",
                     "is_correct": false
                 }
             ]
@@ -846,15 +846,15 @@
             "question": "关于企康业务招标资格的引导，平安产、养、健的关系是（）",
             "options": [
                 {
-                    "text": "A. 关联关系公司",
+                    "text": " 关联关系公司",
                     "is_correct": true
                 },
                 {
-                    "text": "B.控股关系公司",
+                    "text": "控股关系公司",
                     "is_correct": false
                 },
                 {
-                    "text": "C.管理关系公司",
+                    "text": "管理关系公司",
                     "is_correct": false
                 }
             ]
@@ -863,19 +863,19 @@
             "question": "关于企康产品描述错误的是？",
             "options": [
                 {
-                    "text": "A. 公司划拨一笔委托资金到保险公司，专项用于员工及其家 属的健康医疗支出",
+                    "text": " 公司划拨一笔委托资金到保险公司，专项用于员工及其家 属的健康医疗支出",
                     "is_correct": true
                 },
                 {
-                    "text": "B.企业为员工提供的医疗健康管理解决方案",
+                    "text": "企业为员工提供的医疗健康管理解决方案",
                     "is_correct": false
                 },
                 {
-                    "text": "C.在原有医保商保范围外为员工提供额外福利",
+                    "text": "在原有医保商保范围外为员工提供额外福利",
                     "is_correct": false
                 },
                 {
-                    "text": "D.统一标准化方案，优化企业员工福利架构",
+                    "text": "统一标准化方案，优化企业员工福利架构",
                     "is_correct": false
                 }
             ]
@@ -884,19 +884,19 @@
             "question": "哈佛大学研究显示，企业员工健康管理对以下哪项影响最显著？",
             "options": [
                 {
-                    "text": "A. 企业税收减免",
+                    "text": " 企业税收减免",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 员工满意度与忠诚度",
+                    "text": " 员工满意度与忠诚度",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 产品生产成本",
+                    "text": " 产品生产成本",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 市场营销效率",
+                    "text": " 市场营销效率",
                     "is_correct": false
                 }
             ]
@@ -905,19 +905,19 @@
             "question": "健康委托业务中，员工可享受的服务包括",
             "options": [
                 {
-                    "text": "A. 健身器材购买",
+                    "text": " 健身器材购买",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 住院物品购买",
+                    "text": " 住院物品购买",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 康复护理",
+                    "text": " 康复护理",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 美容咨询",
+                    "text": " 美容咨询",
                     "is_correct": false
                 }
             ]
@@ -926,19 +926,19 @@
             "question": "平安健康委托的直付服务场景包括",
             "options": [
                 {
-                    "text": "A. 线上",
+                    "text": " 线上",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 药房购药",
+                    "text": " 药房购药",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 体检中心",
+                    "text": " 体检中心",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 海外就医",
+                    "text": " 海外就医",
                     "is_correct": true
                 }
             ]
@@ -947,19 +947,19 @@
             "question": "平安企康健康保障计划的核心目标是什么？",
             "options": [
                 {
-                    "text": "A. 降低企业运营成本",
+                    "text": " 降低企业运营成本",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 提升员工健康与福利",
+                    "text": " 提升员工健康与福利",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 扩大保险市场份额",
+                    "text": " 扩大保险市场份额",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 优化理赔流程效率",
+                    "text": " 优化理赔流程效率",
                     "is_correct": false
                 }
             ]
@@ -968,19 +968,19 @@
             "question": "平安的医疗网络覆盖范围不包括以下哪项？",
             "options": [
                 {
-                    "text": "A. 全球顶尖医疗机构",
+                    "text": " 全球顶尖医疗机构",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 线下理赔服务中心",
+                    "text": " 线下理赔服务中心",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 家庭医生团队",
+                    "text": " 家庭医生团队",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 企业定制健康活动",
+                    "text": " 企业定制健康活动",
                     "is_correct": false
                 }
             ]
@@ -989,19 +989,19 @@
             "question": "平安企康方案的合规性保障措施不包括？",
             "options": [
                 {
-                    "text": "A. 自建系统管理",
+                    "text": " 自建系统管理",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 资金使用合规",
+                    "text": " 资金使用合规",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 第三方审计团队",
+                    "text": " 第三方审计团队",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 系统化控制",
+                    "text": " 系统化控制",
                     "is_correct": false
                 }
             ]
@@ -1010,19 +1010,19 @@
             "question": "平安产险的医健服务不覆盖以下场景？",
             "options": [
                 {
-                    "text": "A. 到线（线上管理）",
+                    "text": " 到线（线上管理）",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 到企（企业活动）",
+                    "text": " 到企（企业活动）",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 到家（上门护理）",
+                    "text": " 到家（上门护理）",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 到海外（国际医疗）",
+                    "text": " 到海外（国际医疗）",
                     "is_correct": true
                 }
             ]
@@ -1031,19 +1031,19 @@
             "question": "平安企康方案的核心竞争优势不包括？",
             "options": [
                 {
-                    "text": "A. 成熟系统平台",
+                    "text": " 成熟系统平台",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 全球医疗数据库",
+                    "text": " 全球医疗数据库",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 低价市场竞争",
+                    "text": " 低价市场竞争",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 属地化服务团队",
+                    "text": " 属地化服务团队",
                     "is_correct": false
                 }
             ]
@@ -1054,19 +1054,19 @@
             "question": "企业宝（好福利专区）B端账户开通说法正确的是",
             "options": [
                 {
-                    "text": "A. 业务员登录E行销系统，在“辅助投保\n>>网上服务>>企业宝开户”菜单下提交开户申请",
+                    "text": " 业务员登录E行销系统，在“辅助投保\n>>网上服务>>企业宝开户”菜单下提交开户申请",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 业务员登录好帮手AP，在“工作台>>展业神器>>企业宝开户”菜单下提交开户申请",
+                    "text": " 业务员登录好帮手AP，在“工作台>>展业神器>>企业宝开户”菜单下提交开户申请",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 客户自行登录企业宝创建企业账户",
+                    "text": " 客户自行登录企业宝创建企业账户",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 企业宝联系人手机实名认证失败时需要在平安企业宝微信公众号进行人脸识别",
+                    "text": " 企业宝联系人手机实名认证失败时需要在平安企业宝微信公众号进行人脸识别",
                     "is_correct": true
                 }
             ]
@@ -1075,19 +1075,19 @@
             "question": "关于企康账户计息说法错误的是",
             "options": [
                 {
-                    "text": "A. 首期出单：委托资金从业务承保时间次日零时开始计息；",
+                    "text": " 首期出单：委托资金从业务承保时间次日零时开始计息；",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 委托资金每月计息",
+                    "text": " 委托资金每月计息",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 目前约定活期利率为0.35%",
+                    "text": " 目前约定活期利率为0.35%",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 利息每月1日统一分配，均分配至集体账户",
+                    "text": " 利息每月1日统一分配，均分配至集体账户",
                     "is_correct": true
                 }
             ]
@@ -1096,19 +1096,19 @@
             "question": "关于企康自助投保说法正确的是",
             "options": [
                 {
-                    "text": "A. 和E化投保一样，需要业务员在E行销系统录单",
+                    "text": " 和E化投保一样，需要业务员在E行销系统录单",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 由客户在“平安企业宝”平台在线核对委托计划建立相关信息",
+                    "text": " 由客户在“平安企业宝”平台在线核对委托计划建立相关信息",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 客户需要将盖章的委托合同交至机构运营",
+                    "text": " 客户需要将盖章的委托合同交至机构运营",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 业务员打印电子版合同登记表和受益人清单交企业客户用印",
+                    "text": " 业务员打印电子版合同登记表和受益人清单交企业客户用印",
                     "is_correct": false
                 }
             ]
@@ -1117,19 +1117,19 @@
             "question": "业务人员通过E行销录单时，以下说法正确的是",
             "options": [
                 {
-                    "text": "A. 首期供款合计即为期交保费合计，包含经办服务费",
+                    "text": " 首期供款合计即为期交保费合计，包含经办服务费",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 超额资金处理方式：当前仅支持退出系统（在保全资金确认时将超收资金退回至原打款账户；",
+                    "text": " 超额资金处理方式：当前仅支持退出系统（在保全资金确认时将超收资金退回至原打款账户；",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 经办服务费不开票：交费金额需按纯委托资金录入",
+                    "text": " 经办服务费不开票：交费金额需按纯委托资金录入",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 经办服务费不开票：交费金额需按期交保费合计录入",
+                    "text": " 经办服务费不开票：交费金额需按期交保费合计录入",
                     "is_correct": true
                 }
             ]
@@ -1138,19 +1138,19 @@
             "question": "E行销录单操作时费用维护环节，",
             "options": [
                 {
-                    "text": "A. 选择经办服务费不开票时，经办服务费按比例录入",
+                    "text": " 选择经办服务费不开票时，经办服务费按比例录入",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 选择经办服务费开票时，经办服务费按比例录入",
+                    "text": " 选择经办服务费开票时，经办服务费按比例录入",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 经办服务费按金额录入时：委托资金=首期供款合计",
+                    "text": " 经办服务费按金额录入时：委托资金=首期供款合计",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 经办服务费按金额录入时：委托金额+经办费金额=首期供款合计",
+                    "text": " 经办服务费按金额录入时：委托金额+经办费金额=首期供款合计",
                     "is_correct": true
                 }
             ]
@@ -1159,23 +1159,23 @@
             "question": "平安做健康委托有什么优势？",
             "options": [
                 {
-                    "text": "A. 专业的行业经验",
+                    "text": " 专业的行业经验",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 完整的医疗网络",
+                    "text": " 完整的医疗网络",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 庞大的覆盖规模",
+                    "text": " 庞大的覆盖规模",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 全方位的服务体系",
+                    "text": " 全方位的服务体系",
                     "is_correct": true
                 },
                 {
-                    "text": "E.综合的解决方案",
+                    "text": "综合的解决方案",
                     "is_correct": true
                 }
             ]
@@ -1184,23 +1184,23 @@
             "question": "平安的健康委托有哪些特色服务？",
             "options": [
                 {
-                    "text": "A. 健康咨询",
+                    "text": " 健康咨询",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 就医服务",
+                    "text": " 就医服务",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 健康体检",
+                    "text": " 健康体检",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 康护服务",
+                    "text": " 康护服务",
                     "is_correct": true
                 },
                 {
-                    "text": "E.用药服务",
+                    "text": "用药服务",
                     "is_correct": true
                 }
             ]
@@ -1209,19 +1209,19 @@
             "question": "育未客的主要方向包括",
             "options": [
                 {
-                    "text": "A. 效益好、有企业补充医疗的客户",
+                    "text": " 效益好、有企业补充医疗的客户",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 未开展委托业务，但同行业或同类型企业中有开展委托的客户",
+                    "text": " 未开展委托业务，但同行业或同类型企业中有开展委托的客户",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 当地龙头民营企业、事业单位",
+                    "text": " 当地龙头民营企业、事业单位",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 新兴行业且具备人才需求的企业",
+                    "text": " 新兴行业且具备人才需求的企业",
                     "is_correct": true
                 }
             ]
@@ -1230,19 +1230,19 @@
             "question": "与商业健康保险相比，健康委托产品的优势有哪些？",
             "options": [
                 {
-                    "text": "A. 结余资金可以滚存，有活期收益",
+                    "text": " 结余资金可以滚存，有活期收益",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 支持直付，支持健康服务，使用灵活",
+                    "text": " 支持直付，支持健康服务，使用灵活",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 无需产品报备，可按企业需要承接服务",
+                    "text": " 无需产品报备，可按企业需要承接服务",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 发挥保险杠杆，有效转移企业风险",
+                    "text": " 发挥保险杠杆，有效转移企业风险",
                     "is_correct": false
                 }
             ]
@@ -1251,19 +1251,19 @@
             "question": "委托个人保障额度责任包括",
             "options": [
                 {
-                    "text": "A. 医疗就医费用",
+                    "text": " 医疗就医费用",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 体检、就医绿通",
+                    "text": " 体检、就医绿通",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 药品、医疗器械、保健",
+                    "text": " 药品、医疗器械、保健",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 推拿针灸",
+                    "text": " 推拿针灸",
                     "is_correct": true
                 }
             ]
@@ -1272,15 +1272,15 @@
             "question": "客户与保险公司开展健康委托业务，客户能收到的缴费凭证是",
             "options": [
                 {
-                    "text": "A. 管理费部分单独开具发票",
+                    "text": " 管理费部分单独开具发票",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 委托资金收据或全额收据",
+                    "text": " 委托资金收据或全额收据",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 全额保险费发票",
+                    "text": " 全额保险费发票",
                     "is_correct": false
                 }
             ]
@@ -1289,15 +1289,15 @@
             "question": "委托产品的缴费方式包括：",
             "options": [
                 {
-                    "text": "A. 一次性趸缴",
+                    "text": " 一次性趸缴",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 不定期缴费",
+                    "text": " 不定期缴费",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 每年定期缴费",
+                    "text": " 每年定期缴费",
                     "is_correct": false
                 }
             ]
@@ -1306,19 +1306,19 @@
             "question": "健康委托产品不可用于以下哪些场景",
             "options": [
                 {
-                    "text": "A. 员工门诊购药",
+                    "text": " 员工门诊购药",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 企业员工团建旅游",
+                    "text": " 企业员工团建旅游",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 重大疾病保障",
+                    "text": " 重大疾病保障",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 员工子女教育基金",
+                    "text": " 员工子女教育基金",
                     "is_correct": true
                 }
             ]
@@ -1327,19 +1327,19 @@
             "question": "健康委托方案设计需考虑的因素包括",
             "options": [
                 {
-                    "text": "A. 员工年龄结构",
+                    "text": " 员工年龄结构",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 企业预算水平",
+                    "text": " 企业预算水平",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 股票市场波动",
+                    "text": " 股票市场波动",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 服务网络覆盖",
+                    "text": " 服务网络覆盖",
                     "is_correct": true
                 }
             ]
@@ -1348,19 +1348,19 @@
             "question": "健康委托业务可涵盖的服务包括",
             "options": [
                 {
-                    "text": "A. 门诊住院医疗费用报销",
+                    "text": " 门诊住院医疗费用报销",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 重大疾病补助",
+                    "text": " 重大疾病补助",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 健康管理服务",
+                    "text": " 健康管理服务",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 员工住房补贴",
+                    "text": " 员工住房补贴",
                     "is_correct": false
                 }
             ]
@@ -1369,19 +1369,19 @@
             "question": "企业开展健康委托的优势包括",
             "options": [
                 {
-                    "text": "A. 提高员工健康水平",
+                    "text": " 提高员工健康水平",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 增强企业吸引力与凝聚力",
+                    "text": " 增强企业吸引力与凝聚力",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 降低医疗费用支出",
+                    "text": " 降低医疗费用支出",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 提供固定收益投资",
+                    "text": " 提供固定收益投资",
                     "is_correct": false
                 }
             ]
@@ -1390,19 +1390,19 @@
             "question": "以下关于健康委托账户管理的描述正确的是",
             "options": [
                 {
-                    "text": "A. 必须设立集体账户",
+                    "text": " 必须设立集体账户",
                     "is_correct": false
                 },
                 {
-                    "text": "B. 员工离职后账户自动清零",
+                    "text": " 员工离职后账户自动清零",
                     "is_correct": false
                 },
                 {
-                    "text": "C. 企业可灵活分配个人额度",
+                    "text": " 企业可灵活分配个人额度",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 可覆盖退休员工",
+                    "text": " 可覆盖退休员工",
                     "is_correct": true
                 }
             ]
@@ -1411,19 +1411,19 @@
             "question": "平安健康委托的“四到服务”包括",
             "options": [
                 {
-                    "text": "A. 到线",
+                    "text": " 到线",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 到店",
+                    "text": " 到店",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 到家",
+                    "text": " 到家",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 到企",
+                    "text": " 到企",
                     "is_correct": true
                 }
             ]
@@ -1432,19 +1432,19 @@
             "question": "健康委托业务中，企业可设置",
             "options": [
                 {
-                    "text": "A. 集体账户用于大额支出",
+                    "text": " 集体账户用于大额支出",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 个人额度自由使用",
+                    "text": " 个人额度自由使用",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 家属共享账户余额",
+                    "text": " 家属共享账户余额",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 特殊员工救济补助",
+                    "text": " 特殊员工救济补助",
                     "is_correct": true
                 }
             ]
@@ -1453,19 +1453,19 @@
             "question": "平安健康委托的健康管理服务包括",
             "options": [
                 {
-                    "text": "A. 线上问诊",
+                    "text": " 线上问诊",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 康复指导",
+                    "text": " 康复指导",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 住家护工",
+                    "text": " 住家护工",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 海外旅游",
+                    "text": " 海外旅游",
                     "is_correct": false
                 }
             ]
@@ -1474,19 +1474,19 @@
             "question": "健康委托业务的合规风险包括",
             "options": [
                 {
-                    "text": "A. 虚假索赔",
+                    "text": " 虚假索赔",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 滥用基金",
+                    "text": " 滥用基金",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 购买保险",
+                    "text": " 购买保险",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 专款专用",
+                    "text": " 专款专用",
                     "is_correct": false
                 }
             ]
@@ -1495,19 +1495,19 @@
             "question": "以下关于健康委托账户处理的描述正确的是",
             "options": [
                 {
-                    "text": "A. 集体账户余额可二次分配",
+                    "text": " 集体账户余额可二次分配",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 个人额度可结转下年",
+                    "text": " 个人额度可结转下年",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 员工离职可保留账户",
+                    "text": " 员工离职可保留账户",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 退休员工不可使用资金",
+                    "text": " 退休员工不可使用资金",
                     "is_correct": false
                 }
             ]
@@ -1516,19 +1516,19 @@
             "question": "平安健康委托的直付服务场景包括",
             "options": [
                 {
-                    "text": "A. 线上问诊",
+                    "text": " 线上问诊",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 药房购药",
+                    "text": " 药房购药",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 体检中心",
+                    "text": " 体检中心",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 海外就医",
+                    "text": " 海外就医",
                     "is_correct": true
                 }
             ]
@@ -1537,19 +1537,19 @@
             "question": "以下属于健康委托资金管理要求的有",
             "options": [
                 {
-                    "text": "A. 专款专用",
+                    "text": " 专款专用",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 滚存结余",
+                    "text": " 滚存结余",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 企业补足不足",
+                    "text": " 企业补足不足",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 保险公司垫资",
+                    "text": " 保险公司垫资",
                     "is_correct": false
                 }
             ]
@@ -1558,19 +1558,19 @@
             "question": "健康委托业务中，员工可享受的服务包括",
             "options": [
                 {
-                    "text": "A. 名医挂号",
+                    "text": " 名医挂号",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 住院安排",
+                    "text": " 住院安排",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 康复护理",
+                    "text": " 康复护理",
                     "is_correct": true
                 },
                 {
-                    "text": "D. 心理咨询",
+                    "text": " 心理咨询",
                     "is_correct": true
                 }
             ]
@@ -1579,19 +1579,19 @@
             "question": "下列哪些选项描述了委托的定义？",
             "options": [
                 {
-                    "text": "A. 企业将员工医疗健康相关服务的资金统一打包给保险公司进行管理。",
+                    "text": " 企业将员工医疗健康相关服务的资金统一打包给保险公司进行管理。",
                     "is_correct": true
                 },
                 {
-                    "text": "B. 委托资金属于企业，由保险公司用健康委托及保险产品来承接。",
+                    "text": " 委托资金属于企业，由保险公司用健康委托及保险产品来承接。",
                     "is_correct": true
                 },
                 {
-                    "text": "C. 保险公司自行筹措资金为企业的员工提供医疗服务。",
+                    "text": " 保险公司自行筹措资金为企业的员工提供医疗服务。",
                     "is_correct": false
                 },
                 {
-                    "text": "D. 企业直接为员工支付所有医疗费用，不通过保险公司。",
+                    "text": " 企业直接为员工支付所有医疗费用，不通过保险公司。",
                     "is_correct": false
                 }
             ]
