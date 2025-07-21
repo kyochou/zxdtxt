@@ -20,10 +20,10 @@
       }
 
       .container {
-        margin-top: 15%;
+        margin-top: 14%;
         margin-left: 7%;
         width: 86%;
-        height: 63vh;
+        height: 64vh;
       }
 
       .draw-section {
@@ -163,43 +163,101 @@
       /* 题目显示界面样式 */
       .question-section {
         width: 100%;
-        height: 100%;
+        height: 96%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
       }
 
       .question-display {
         background: rgba(255, 255, 255, 0.95);
         border-radius: 3%;
-        padding: 5%;
+        padding: 1%;
         width: 90%;
-        height: 90%;
+        height: 100%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         text-align: center;
         overflow-y: auto;
       }
 
       .question-title {
-        color: #333333;
-        font-size: 2em;
-        margin-bottom: 3%;
+        color: #667eea;
+        font-size: 2.2em;
+        margin-bottom: 4%;
         font-weight: bold;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        border-bottom: 3px solid rgba(102, 126, 234, 0.2);
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .question-title::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
       }
 
       .question-content {
         color: #333333;
         font-size: 1.3em;
-        line-height: 1.6;
-        margin-bottom: 4%;
+        line-height: 1.8;
         text-align: left;
-        padding: 3%;
-        background: #f8f9fa;
-        border-radius: 2%;
-        border-left: 4px solid #667eea;
+        padding: 1%;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 15px;
+        border-left: 6px solid #667eea;
         min-height: 50%;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .question-content:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .question-content p {
+        margin: 15px 0;
+        padding: 15px;
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 10px;
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .question-content p:hover {
+        background: rgba(102, 126, 234, 0.1);
+        border-color: rgba(102, 126, 234, 0.2);
+        transform: translateX(5px);
+      }
+
+      .question-content span {
+        font-weight: bold;
+        color: #e74c3c;
+        background: rgba(231, 76, 60, 0.1);
+        padding: 3px 8px;
+        border-radius: 5px;
+        margin: 0 3px;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .question-content span:hover {
+        background: rgba(231, 76, 60, 0.2);
+        transform: scale(1.05);
       }
 
       .back-btn {
@@ -246,12 +304,23 @@
       let questions = [];
       let usedQuestions = []; // 记录已抽过的题目索引
 
+      // 打乱数组顺序的函数（Fisher-Yates洗牌算法）
+      function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      }
+
       // 读取team.json文件
       async function loadQuestions() {
         try {
           const response = await fetch("data/team.json");
           const data = await response.json();
-          questions = data.主观 || [];
+          // 打乱题目顺序
+          questions = shuffleArray(data.主观 || []);
           generateQuestionCards();
         } catch (error) {
           console.error("加载题目失败:", error);
@@ -379,14 +448,28 @@
         const drawSection = document.getElementById("drawSection");
         const questionSection = document.getElementById("questionSection");
         const questionContent = document.getElementById("questionContent");
+        const questionTitle = document.querySelector(".question-title");
 
         // 隐藏抽题界面，显示题目界面
         drawSection.style.display = "none";
         questionSection.style.display = "flex";
 
-        // 显示选中的题目内容
+        // 解析选中的题目内容
         const selectedQuestion = questions[selectedQuestionIndex];
-        questionContent.textContent = selectedQuestion.question;
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = selectedQuestion.question;
+
+        // 提取h1标签内容作为标题
+        const h1Element = tempDiv.querySelector("h1");
+        if (h1Element) {
+          questionTitle.textContent = h1Element.textContent;
+          // 从临时div中移除h1标签，避免重复显示
+          h1Element.remove();
+        }
+
+        // 显示剩余的所有内容（所有p标签等）
+        questionContent.innerHTML =
+          tempDiv.innerHTML || selectedQuestion.question;
       }
 
       // 返回抽题界面
