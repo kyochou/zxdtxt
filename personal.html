@@ -21,10 +21,10 @@
       }
 
       .container {
-        margin-top: 15%;
+        margin-top: 17%;
         margin-left: 7%;
         width: 86%;
-        height: 63vh;
+        height: 60vh;
       }
 
       .draw-section {
@@ -181,7 +181,7 @@
 
       .question-content {
         background: rgba(255, 255, 255, 0.95);
-        border-radius: 3%;
+        border-radius: 15px;
         padding: 3%;
         width: 90%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -192,6 +192,42 @@
         line-height: 1.6;
         margin: 0 auto;
         position: relative;
+        height: 100%;
+      }
+
+      .question-title {
+        color: #667eea;
+        font-size: 1.8em;
+        margin-bottom: 2%;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+        border-bottom: 3px solid rgba(102, 126, 234, 0.2);
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .question-title::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+      }
+
+      .question-display {
+        width: 100%;
+        height: 85%;
+        overflow-y: auto;
       }
 
       .timer_wrapper {
@@ -252,9 +288,9 @@
       }
 
       .question-text {
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 25px;
+        font-size: 22px;
+        line-height: 1.8;
+        margin-bottom: 35px;
         color: #333;
         font-weight: 500;
       }
@@ -296,7 +332,6 @@
       .current-question {
         font-size: 24px;
         font-weight: bold;
-        margin-right: 15px;
       }
 
       .total-questions {
@@ -333,8 +368,8 @@
       .current-question-content {
         background: #f8f9fa;
         border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 30px;
+        padding: 40px;
+        margin-bottom: 40px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         text-align: left;
         border-left: 4px solid #667eea;
@@ -343,19 +378,19 @@
       .options {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 18px;
       }
 
       .option-item {
         display: flex;
         align-items: center;
-        padding: 15px 20px;
+        padding: 20px 25px;
         background: #f8f9fa;
         border: 2px solid transparent;
         border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-size: 16px;
+        font-size: 18px;
         position: relative;
       }
 
@@ -431,7 +466,7 @@
 
       .option-text {
         flex: 1;
-        line-height: 1.5;
+        line-height: 1.7;
       }
 
       /* 题目控制按钮样式 */
@@ -582,6 +617,11 @@
         background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
       }
 
+      .result-card.partial {
+        border-color: #ff9800;
+        background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      }
+
       .result-card.incorrect {
         border-color: #f44336;
         background: linear-gradient(135deg, #ffeaea 0%, #ffebee 100%);
@@ -709,7 +749,10 @@
           <div class="timer" id="timer">01:00</div>
         </div>
         <div class="question-content" id="questionContent">
-          <!-- 题目内容将在这里显示 -->
+          <h2 class="question-title" id="questionTitle">题目内容</h2>
+          <div class="question-display" id="questionDisplay">
+            <!-- 题目内容将在这里显示 -->
+          </div>
         </div>
       </div>
     </div>
@@ -733,12 +776,24 @@
         }
       }
 
+      // Fisher-Yates洗牌算法
+      function shuffleArray(array) {
+        const shuffled = [...array]; // 创建副本，避免修改原数组
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      }
+
       // 生成26个题包，每个题包包含1个多选题、2个判断题、2个单选题
       function generateQuestionPacks() {
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-        const singleChoice = allQuestions.单选 || [];
-        const multipleChoice = allQuestions.多选 || [];
-        const trueOrFalse = allQuestions.判断 || [];
+
+        // 先打乱各类题目
+        const singleChoice = shuffleArray(allQuestions.单选 || []);
+        const multipleChoice = shuffleArray(allQuestions.多选 || []);
+        const trueOrFalse = shuffleArray(allQuestions.判断 || []);
 
         questionPacks = [];
 
@@ -833,6 +888,14 @@
         }
 
         if (availableIndexes.length === 0) return;
+
+        // 如果只剩最后一个题包，直接进入答题环节，不播放动画
+        if (availableIndexes.length === 1) {
+          const finalIndex = availableIndexes[0];
+          finishDraw(finalIndex);
+          showQuestion(); // 直接开始答题
+          return;
+        }
 
         isDrawing = true;
         const drawBtn = document.getElementById("drawBtn");
@@ -980,20 +1043,23 @@
       function displayCurrentQuestion() {
         const question = currentQuestions[currentQuestionIndex];
         const totalQuestions = currentQuestions.length;
-        const questionContent = document.getElementById("questionContent");
+        const questionTitle = document.getElementById("questionTitle");
+        const questionDisplay = document.getElementById("questionDisplay");
+
+        // 设置题目标题为题型
+        questionTitle.textContent = question.type;
 
         // 生成进度条HTML
         let progressHtml = `
             <span class="current-question">第 ${
               currentQuestionIndex + 1
             } 题</span>
-            <span class="total-questions">共 ${totalQuestions} 题</span>
             <div class="progress-bar">
               <div class="progress-fill" style="width: ${
                 ((currentQuestionIndex + 1) / totalQuestions) * 100
               }%"></div>
             </div>
-            <div class="question-type-badge">${question.type}</div>
+            <span class="total-questions">共 ${totalQuestions} 题</span>
         `;
 
         // 生成题目内容HTML
@@ -1066,7 +1132,7 @@
           </div>
         `;
 
-        questionContent.innerHTML = html;
+        questionDisplay.innerHTML = html;
       }
 
       function selectOption(optionIndex) {
@@ -1135,7 +1201,7 @@
       }
 
       function showResults() {
-        let correctCount = 0;
+        let totalScore = 0;
 
         // 显示得分和题目卡片
         let html = `
@@ -1157,6 +1223,7 @@
           const userAnswer = userAnswers[questionIndex];
           let correctAnswers = [];
           let isCorrect = false;
+          let questionScore = 0;
 
           // 找到所有正确答案
           question.options.forEach((option, optionIndex) => {
@@ -1171,7 +1238,7 @@
             }
           });
 
-          // 根据题目类型判断答案是否正确
+          // 根据题目类型判断答案是否正确并计分
           if (question.type === "多选题") {
             if (Array.isArray(userAnswer) && correctAnswers.length > 0) {
               const sortedUserAnswer = [...userAnswer].sort();
@@ -1179,22 +1246,47 @@
               isCorrect =
                 JSON.stringify(sortedUserAnswer) ===
                 JSON.stringify(sortedCorrectAnswers);
+
+              if (isCorrect) {
+                questionScore = 8; // 完全正确得8分
+              } else {
+                // 检查是否没有选择错误选项
+                const hasWrongSelection = userAnswer.some(
+                  (answer) => !correctAnswers.includes(answer)
+                );
+                if (!hasWrongSelection && userAnswer.length > 0) {
+                  questionScore = 4; // 没有选错误选项得4分
+                }
+              }
             }
           } else {
             isCorrect =
               correctAnswers.length > 0 && userAnswer === correctAnswers[0];
+            if (isCorrect) {
+              questionScore = 8; // 答对得8分
+            }
           }
 
-          if (isCorrect) correctCount++;
+          totalScore += questionScore;
 
-          const cardClass = isCorrect ? "correct" : "incorrect";
-          const cardIcon = isCorrect ? "✓" : "✗";
-          const cardColor = isCorrect ? "#4caf50" : "#f44336";
+          const cardClass = isCorrect
+            ? "correct"
+            : questionScore > 0
+            ? "partial"
+            : "incorrect";
+          const cardIcon = isCorrect ? "✓" : questionScore > 0 ? "◐" : "✗";
+          const cardColor = isCorrect
+            ? "#4caf50"
+            : questionScore > 0
+            ? "#ff9800"
+            : "#f44336";
 
           html += `
             <div class="result-card ${cardClass}">
               <div class="card-header">
-                <span class="question-number">第${questionIndex + 1}题</span>
+                <span class="question-number">第${
+                  questionIndex + 1
+                }题 (${questionScore}分)</span>
                 <span class="result-icon" style="color: ${cardColor}">${cardIcon}</span>
               </div>
               <div class="question-type-tag">${question.type}</div>
@@ -1214,7 +1306,7 @@
         document.getElementById("questionContent").innerHTML = html;
 
         // 更新得分显示
-        document.getElementById("final-score").textContent = correctCount;
+        document.getElementById("final-score").textContent = totalScore;
 
         // 显示结果页面
         document.getElementById("questionSection").style.display = "flex";
@@ -1224,17 +1316,20 @@
         setTimeout(() => {
           const scoreElement = document.getElementById("final-score");
           let currentScore = 0;
-          const targetScore = correctCount;
-          const increment = targetScore > 0 ? 1 : 0;
+          const targetScore = totalScore;
+          const increment =
+            targetScore > 0 ? Math.max(1, Math.ceil(targetScore / 20)) : 0;
 
           const scoreAnimation = setInterval(() => {
             if (currentScore >= targetScore) {
               clearInterval(scoreAnimation);
+              scoreElement.textContent = targetScore;
             } else {
               currentScore += increment;
+              if (currentScore > targetScore) currentScore = targetScore;
               scoreElement.textContent = currentScore;
             }
-          }, 100);
+          }, 50);
         }, 500);
       }
 
@@ -1244,6 +1339,22 @@
         userAnswers = currentQuestions.map((q) =>
           q.type === "多选题" ? [] : null
         );
+
+        // 确保显示题目界面而不是结果界面
+        const drawSection = document.getElementById("drawSection");
+        const questionSection = document.getElementById("questionSection");
+        drawSection.style.display = "none";
+        questionSection.style.display = "flex";
+
+        // 恢复原始的questionContent结构
+        const questionContent = document.getElementById("questionContent");
+        questionContent.innerHTML = `
+          <h2 class="question-title" id="questionTitle">题目内容</h2>
+          <div class="question-display" id="questionDisplay">
+            <!-- 题目内容将在这里显示 -->
+          </div>
+        `;
+
         startTimer();
         displayCurrentQuestion();
       }
@@ -1254,6 +1365,15 @@
         const drawSection = document.getElementById("drawSection");
         const questionSection = document.getElementById("questionSection");
         const drawBtn = document.getElementById("drawBtn");
+
+        // 恢复原始的questionContent结构
+        const questionContent = document.getElementById("questionContent");
+        questionContent.innerHTML = `
+          <h2 class="question-title" id="questionTitle">题目内容</h2>
+          <div class="question-display" id="questionDisplay">
+            <!-- 题目内容将在这里显示 -->
+          </div>
+        `;
 
         // 显示抽题界面，隐藏题目界面
         drawSection.style.display = "block";
@@ -1293,7 +1413,7 @@
     </script>
     <div style="text-align: center; margin-top: 70px; padding: 10px">
       <a
-        href="index.html"
+        href="idxpersonal.html"
         style="color: #f6f4f4; text-decoration: none; font-size: 14px"
         >返回首页</a
       >

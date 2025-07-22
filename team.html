@@ -20,10 +20,10 @@
       }
 
       .container {
-        margin-top: 14%;
+        margin-top: 17%;
         margin-left: 7%;
         width: 86%;
-        height: 64vh;
+        height: 60vh;
       }
 
       .draw-section {
@@ -169,9 +169,52 @@
         align-items: center;
       }
 
+      .timer_wrapper {
+        position: relative;
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 1;
+        top: -30px;
+      }
+
+      .timer {
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border: 2px solid #ddd;
+        width: 6%;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-size: 2em;
+      }
+
+      .timer.warning {
+        color: #ff4444;
+        border-color: #ff4444;
+        background: rgba(255, 255, 255, 0.95);
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
       .question-display {
         background: rgba(255, 255, 255, 0.95);
-        border-radius: 3%;
+        border-radius: 15px;
         padding: 1%;
         width: 90%;
         height: 100%;
@@ -182,7 +225,7 @@
 
       .question-title {
         color: #667eea;
-        font-size: 2.2em;
+        font-size: 2.5em;
         margin-bottom: 4%;
         font-weight: bold;
         text-align: center;
@@ -231,7 +274,7 @@
 
       .question-content p {
         margin: 15px 0;
-        padding: 15px;
+        padding: 1.5%;
         background: rgba(102, 126, 234, 0.05);
         border-radius: 10px;
         border: 1px solid rgba(102, 126, 234, 0.1);
@@ -291,18 +334,25 @@
         <button class="draw-btn" id="drawBtn">开始抽题</button>
       </div>
       <div class="question-section" id="questionSection" style="display: none">
+        <div class="timer_wrapper">
+          <div class="timer" id="timer">08:00</div>
+        </div>
         <div class="question-display">
           <h2 class="question-title">题目内容</h2>
           <div class="question-content" id="questionContent">
             <!-- 题目内容将在这里显示 -->
           </div>
-          <button class="back-btn" id="backBtn">返回抽题</button>
+          <div>
+            <button class="back-btn" id="backBtn">返回抽题</button>
+          </div>
         </div>
       </div>
     </div>
     <script>
       let questions = [];
-      let usedQuestions = []; // 记录已抽过的题目索引
+      let usedQuestions = {}; // 记录每个题目被抽中的次数
+      let timerInterval = null; // 倒计时器
+      let timeLeft = 480; // 剩余时间（秒），8分钟 = 480秒
 
       // 打乱数组顺序的函数（Fisher-Yates洗牌算法）
       function shuffleArray(array) {
@@ -320,7 +370,8 @@
           const response = await fetch("data/team.json");
           const data = await response.json();
           // 打乱题目顺序
-          questions = shuffleArray(data.主观 || []);
+          // questions = shuffleArray(data.主观 || []);
+          questions = data.主观 || [];
           generateQuestionCards();
         } catch (error) {
           console.error("加载题目失败:", error);
@@ -333,10 +384,25 @@
         cardsContainer.innerHTML = "";
 
         questions.forEach((question, index) => {
+          // 提取场景名称
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = question.question;
+          const h1Element = tempDiv.querySelector("h1");
+          let scenarioName = `场景${index + 1}`; // 默认场景名称
+
+          if (h1Element) {
+            const h1Text = h1Element.textContent;
+            // 提取场景名称（例如："场景一：央企客户企补已建立，无委托，新建委托启发" -> "场景一"）
+            const scenarioMatch = h1Text.match(/场景[一二三四五六七八九十\d+]/);
+            if (scenarioMatch) {
+              scenarioName = scenarioMatch[0];
+            }
+          }
+
           const card = document.createElement("div");
           card.className = "question-card";
           card.innerHTML = `
-                  <div class="card-number">${index + 1}</div>
+                  <div class="card-number">${scenarioName}</div>
                 `;
           cardsContainer.appendChild(card);
         });
@@ -349,9 +415,12 @@
       function startDrawAnimation() {
         if (isDrawing || questions.length === 0) return;
 
-        // 检查是否所有题目都已抽完，如果是则重置
-        if (usedQuestions.length >= questions.length) {
-          usedQuestions = [];
+        // 检查是否所有题目都已抽完两次，如果是则重置
+        const allUsedTwice = questions.every(
+          (_, index) => (usedQuestions[index] || 0) >= 2
+        );
+        if (allUsedTwice) {
+          usedQuestions = {};
           // 重置所有卡片的视觉状态
           const cards = document.querySelectorAll(".question-card");
           cards.forEach((card) => {
@@ -359,10 +428,10 @@
           });
         }
 
-        // 获取可用的题目索引
+        // 获取可用的题目索引（被抽中次数少于2次的题目）
         const availableIndexes = [];
         for (let i = 0; i < questions.length; i++) {
-          if (!usedQuestions.includes(i)) {
+          if ((usedQuestions[i] || 0) < 2) {
             availableIndexes.push(i);
           }
         }
@@ -380,20 +449,14 @@
         const maxCount = 30; // 动画持续时间
 
         const interval = setInterval(() => {
-          // 重置所有卡片状态（除了已使用的）
+          // 重置所有卡片状态
           cards.forEach((card, index) => {
             card.classList.remove("shuffling", "selected", "dimmed");
-            if (usedQuestions.includes(index)) {
-              card.classList.add("used");
-            }
           });
 
-          // 从可用题目中随机选择一张卡片进行翻转动画
-          const randomAvailableIndex =
-            availableIndexes[
-              Math.floor(Math.random() * availableIndexes.length)
-            ];
-          cards[randomAvailableIndex].classList.add("shuffling");
+          // 从所有题目中随机选择一张卡片进行翻转动画
+          const randomIndex = Math.floor(Math.random() * questions.length);
+          cards[randomIndex].classList.add("shuffling");
 
           counter++;
           if (counter >= maxCount) {
@@ -410,8 +473,8 @@
       // 完成抽题
       function finishDraw(questionIndex) {
         selectedQuestionIndex = questionIndex;
-        // 将选中的题目添加到已使用列表
-        usedQuestions.push(questionIndex);
+        // 增加选中题目的使用次数
+        usedQuestions[questionIndex] = (usedQuestions[questionIndex] || 0) + 1;
 
         const drawBtn = document.getElementById("drawBtn");
         const cards = document.querySelectorAll(".question-card");
@@ -419,11 +482,7 @@
         // 重置所有卡片状态
         cards.forEach((card, index) => {
           card.classList.remove("shuffling");
-          if (usedQuestions.includes(index)) {
-            card.classList.add("used");
-          } else {
-            card.classList.add("dimmed");
-          }
+          card.classList.add("dimmed");
         });
 
         // 高亮选中的卡片
@@ -470,10 +529,59 @@
         // 显示剩余的所有内容（所有p标签等）
         questionContent.innerHTML =
           tempDiv.innerHTML || selectedQuestion.question;
+
+        // 启动倒计时
+        startTimer();
+      }
+
+      // 启动倒计时器
+      function startTimer() {
+        timeLeft = 480; // 重置为480秒（8分钟）
+        const timerElement = document.getElementById("timer");
+        timerElement.classList.remove("warning");
+
+        // 清除之前的计时器
+        if (timerInterval) {
+          clearInterval(timerInterval);
+        }
+
+        timerInterval = setInterval(() => {
+          timeLeft--;
+
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          const timeString = `${minutes.toString().padStart(2, "0")}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
+
+          timerElement.textContent = timeString;
+
+          if (timeLeft <= 0) {
+            timerElement.classList.add("warning");
+            timerElement.textContent = "00:00";
+            clearInterval(timerInterval);
+            // 可以在这里添加时间到期的处理逻辑
+          }
+        }, 1000);
+      }
+
+      // 停止倒计时器
+      function stopTimer() {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
       }
 
       // 返回抽题界面
       function backToDraw() {
+        stopTimer();
+
+        // 重置倒计时显示
+        const timerElement = document.getElementById("timer");
+        timerElement.textContent = "08:00";
+        timerElement.classList.remove("warning");
+
         const drawSection = document.getElementById("drawSection");
         const questionSection = document.getElementById("questionSection");
         const drawBtn = document.getElementById("drawBtn");
@@ -483,23 +591,22 @@
         questionSection.style.display = "none";
 
         // 重置按钮状态
-        const remainingQuestions = questions.length - usedQuestions.length;
-        if (remainingQuestions > 0) {
-          drawBtn.textContent = `重新抽题 (剩余${remainingQuestions}题)`;
+        const remainingDraws = questions.reduce((total, _, index) => {
+          return total + Math.max(0, 2 - (usedQuestions[index] || 0));
+        }, 0);
+        if (remainingDraws > 0) {
+          drawBtn.textContent = `重新抽题 (剩余${remainingDraws}次)`;
         } else {
           drawBtn.textContent = "重新抽题 (将重置所有题目)";
         }
         drawBtn.removeEventListener("click", showQuestion);
         drawBtn.addEventListener("click", startDrawAnimation);
 
-        // 重置选中状态，但保持已使用题目的状态
+        // 重置选中状态
         selectedQuestionIndex = -1;
         const cards = document.querySelectorAll(".question-card");
         cards.forEach((card, index) => {
           card.classList.remove("shuffling", "selected", "dimmed");
-          if (usedQuestions.includes(index)) {
-            card.classList.add("used");
-          }
         });
       }
 
@@ -515,7 +622,7 @@
     </script>
     <div style="text-align: center; margin-top: 70px; padding: 10px">
       <a
-        href="index.html"
+        href="idxteam.html"
         style="color: #f6f4f4; text-decoration: none; font-size: 14px"
         >返回首页</a
       >
