@@ -1,6 +1,90 @@
 {
     "单选": [
         {
+            "question": "上海市社会团体分类不包括？",
+            "options": [
+                {
+                    "text": "学术性",
+                    "is_correct": false
+                },
+                {
+                    "text": "行业性",
+                    "is_correct": false
+                },
+                {
+                    "text": "盈利性",
+                    "is_correct": true
+                },
+                {
+                    "text": "联合性",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
+            "question": "下列哪项属于健康保障委托管理产品的差异化功能？",
+            "options": [
+                {
+                    "text": "统一保障额度设置",
+                    "is_correct": false
+                },
+                {
+                    "text": "集体+个人保障额度独立设置",
+                    "is_correct": true
+                },
+                {
+                    "text": "仅支持团体保障额度",
+                    "is_correct": false
+                },
+                {
+                    "text": "仅支持个人保障额度",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
+            "question": "以下哪一项不是招投标商务部分的评分标准？",
+            "options": [
+                {
+                    "text": "资本实力",
+                    "is_correct": false
+                },
+                {
+                    "text": "服务经验",
+                    "is_correct": false
+                },
+                {
+                    "text": "偿付能力",
+                    "is_correct": false
+                },
+                {
+                    "text": "团购方案",
+                    "is_correct": true
+                }
+            ]
+        },
+        {
+            "question": "（）是委托人和受托人的共同义务",
+            "options": [
+                {
+                    "text": "分别管理分别记账",
+                    "is_correct": false
+                },
+                {
+                    "text": "足额缴金依法合规",
+                    "is_correct": false
+                },
+                {
+                    "text": "遵守各项法律及规定",
+                    "is_correct": true
+                },
+                {
+                    "text": "支付委托管理费用",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
             "question": "E化出单时，健康委托投保任务列表如显示为“投保出错”，以下哪种说法错误",
             "options": [
                 {
@@ -140,23 +224,6 @@
             ]
         },
         {
-            "question": "补充医疗中最有助于提升客户关键人群直接关系的服务是",
-            "options": [
-                {
-                    "text": "理赔服务",
-                    "is_correct": false
-                },
-                {
-                    "text": "保全服务",
-                    "is_correct": false
-                },
-                {
-                    "text": " 健管服务",
-                    "is_correct": true
-                }
-            ]
-        },
-        {
             "question": "关于健康保障委托产品的描述，以下说法错误的是",
             "options": [
                 {
@@ -236,23 +303,6 @@
                 },
                 {
                     "text": " 保险公司不得对委托资金提供各种形式的增值保证",
-                    "is_correct": true
-                }
-            ]
-        },
-        {
-            "question": "健康委托资金能给退休员工使用吗？",
-            "options": [
-                {
-                    "text": "不可以给退休员工使用",
-                    "is_correct": false
-                },
-                {
-                    "text": "可以给退休员工使用",
-                    "is_correct": false
-                },
-                {
-                    "text": " 企业根据自身情况决定",
                     "is_correct": true
                 }
             ]
@@ -372,7 +422,7 @@
             ]
         },
         {
-            "question": "在委托合同届满前，双方对续签无异议的自动延长（）年",
+            "question": "在委托合同期满前，双方对续签无异议的自动延长（）年",
             "options": [
                 {
                     "text": "1年",
@@ -389,27 +439,6 @@
                 {
                     "text": " 5年",
                     "is_correct": false
-                }
-            ]
-        },
-        {
-            "question": "以下关于授信模式描述错误的是（）",
-            "options": [
-                {
-                    "text": "支持健康直付实现在企业集体账户中",
-                    "is_correct": false
-                },
-                {
-                    "text": "避免部分企业内部审计对“个人账户”等字样敏感",
-                    "is_correct": false
-                },
-                {
-                    "text": " 属于健康委托产品的特色功能之一",
-                    "is_correct": false
-                },
-                {
-                    "text": " 委托商业保司等第三方承接，可按企业需求定制方案，灵活性高",
-                    "is_correct": true
                 }
             ]
         },
@@ -919,27 +948,6 @@
                 {
                     "text": " 美容咨询",
                     "is_correct": false
-                }
-            ]
-        },
-        {
-            "question": "平安健康委托的直付服务场景包括",
-            "options": [
-                {
-                    "text": " 线上",
-                    "is_correct": true
-                },
-                {
-                    "text": " 药房购药",
-                    "is_correct": true
-                },
-                {
-                    "text": " 体检中心",
-                    "is_correct": true
-                },
-                {
-                    "text": " 海外就医",
-                    "is_correct": true
                 }
             ]
         },
@@ -1599,6 +1607,19 @@
     ],
     "判断": [
         {
+            "question": "保险公司开展健康保障委托管理业务，收取的管理费用应当覆盖委托管理业务的各项成本。",
+            "options": [
+                {
+                    "text": "正确",
+                    "is_correct": true
+                },
+                {
+                    "text": "错误",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
             "question": "使用健康直付服务仍需提交理赔申请",
             "options": [
                 {
@@ -1790,19 +1811,6 @@
                 {
                     "text": "错误",
                     "is_correct": false
-                }
-            ]
-        },
-        {
-            "question": "健康委托业务的增值服务包括企业账户开户和工资代发。",
-            "options": [
-                {
-                    "text": "正确",
-                    "is_correct": false
-                },
-                {
-                    "text": "错误",
-                    "is_correct": true
                 }
             ]
         },
